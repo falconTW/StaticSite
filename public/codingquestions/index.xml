@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coding Questions on Hanswu</title>
+    <link>http://falcontw.me/codingquestions/</link>
+    <description>Recent content in Coding Questions on Hanswu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 30 Aug 2018 23:36:07 +0800</lastBuildDate>
+    
+	<atom:link href="http://falcontw.me/codingquestions/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

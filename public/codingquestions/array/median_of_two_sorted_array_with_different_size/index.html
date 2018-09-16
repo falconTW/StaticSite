@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.47.1" />
+    <meta name="description" content="">
+
+
+    <link rel="shortcut icon" href=/images/favicon.ico type="image/x-icon" />
+<link rel="icon" href=/images/favicon.ico type="image/x-icon" />
+    <title>Median of 2 sorted array :: Hanswu</title>
+    
+    
+    <link href="/css/nucleus.css?1536986012" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1536986012" rel="stylesheet">
+    
+    <link href="/css/featherlight.min.css?1536986012" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1536986012" rel="stylesheet">
+    <link href="/css/auto-complete.css?1536986012" rel="stylesheet">
+    <link href="/css/theme.css?1536986012" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1536986012" rel="stylesheet">
+    <link href="/css/doc-theme.css?1536986012" rel="stylesheet">
+    <link href="/css/mobile-doc-theme.css?1536986012" rel="stylesheet">
+    
+
+    <script src="/js/jquery-2.x.min.js?1536986012"></script>
+    
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left{ 
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/codingquestions/array/median_of_two_sorted_array_with_different_size/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+	<a id="logo" href=/>
+  <img src=/images/falcon.png />
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fa fa-search"></i></label>
+    <input data-search-input id="search-by" type="text" placeholder="Search...">
+    <span data-search-clear=""><i class="fa fa-close"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1536986012"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1536986012"></script>
+<script type="text/javascript">
+    
+        var baseurl = '\/';
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1536986012"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/learninghistory/" title="Learning History" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/learninghistory/">
+          <b>1. </b>Learning History
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/learninghistory/softwareengineering/" title="Software Engineering" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/learninghistory/softwareengineering/">
+          Software Engineering
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/learninghistory/softwareengineering/solidprinciple/" title="SOLID Principle" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/learninghistory/softwareengineering/solidprinciple/">
+          SOLID Principle
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/" title="Coding Questions" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/codingquestions/">
+          <b>2. </b>Coding Questions
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/" title="Array" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/codingquestions/array/">
+          Array
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/median_of_two_sorted_array_with_different_size/" title="Median of 2 sorted array" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="/codingquestions/array/median_of_two_sorted_array_with_different_size/">
+          Median of 2 sorted array
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+  </div>
+
+  
+  <section id="footer">
+    <p> &copy; 2018 HANSWU. </p>
+  </section>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fa fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/array/'>Array</a> > Median of 2 sorted array
+          
+         
+          
+         
+          
+         
+          
+           
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#solution">Solution</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+
+        
+        <div id="body-inner">
+          
+            <h2>Median of 2 sorted array</h2>
+          
+
+        
+
+
+
+
+<p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/description/">Questions Link</a></p>
+
+<p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+
+<p>You may assume nums1 and nums2 cannot be both empty.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>This is indeed an kth smalleset element questions. The kth value turns to be median in this case.</p>
+
+<p>Since we need to implement this within logarithmic time. We need to take advantage of <strong>Binary Search</strong>.</p>
+
+<p>The point is that <strong>it&rsquo;s not what is left but what we delete</strong> matters.</p>
+
+<p>Suppose there is two array called A and B.</p>
+
+<p>A: 1,3,5,6,10.</p>
+
+<p>B: 2,6,9,13</p>
+
+<p>and we wanna find the <strong>7th</strong> element.</p>
+
+<p><sup>7</sup>&frasl;<sub>2</sub> =3, So we take out the 3th element from A and B.</p>
+
+<p>A[2] = 5, B[2] =9</p>
+
+<p>Here we can see that B[2]&gt;A[2] which means the 7th elements won&rsquo;t be in the top 3 elements of A.</p>
+
+<p>Then we can remove the top 3 elemets of A and the problem is reduced to finding K = 7-K/2 = 4;</p>
+
+<p>A: 6,10</p>
+
+<p>B: 2,6,9,13</p>
+
+<p>K/2 = 2 =&gt; A[1] = 10, B[2] = 9;</p>
+
+<p>A[1] &gt; B[1]; Remove the top elements of B</p>
+
+<p>K= 4-2=2</p>
+
+<p>K/2 = 1</p>
+
+<p>A: 6,10 B: 9,13 A[0] = 6, B[0]=9</p>
+
+<p>B[0]&gt;A[0] So we remove A[0]</p>
+
+<p>A: 10 B: 9,13 K = 2-1 = 1</p>
+
+<p>Now we can return the smallest one as the answer.</p>
+
+<p>Note that there will possily be <strong>Corner cases</strong></p>
+
+<p>1.one array is empty, return the kth number of the nonempty array.
+</br>
+2.even number of total elements,we need to find two middle numbers and calculate the median.
+</br>
+3.k may be larger than the length of the smaller array.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">	<span style="color:#6ab825;font-weight:bold">double</span> <span style="color:#447fcf">findMedianSortedArrays</span>(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;&amp; nums1, vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;&amp; nums2) 
+	{
+
+		<span style="color:#6ab825;font-weight:bold">int</span> total = nums1.size() + nums2.size();
+		<span style="color:#6ab825;font-weight:bold">if</span> (total % <span style="color:#3677a9">2</span> != <span style="color:#3677a9">0</span>)
+		{
+			<span style="color:#6ab825;font-weight:bold">return</span> findKth(nums1, nums2, total / <span style="color:#3677a9">2</span> + <span style="color:#3677a9">1</span>);
+		}
+		<span style="color:#6ab825;font-weight:bold">else</span>
+		{
+			<span style="color:#6ab825;font-weight:bold">return</span> (findKth(nums1, nums2, total / <span style="color:#3677a9">2</span>) + findKth(nums1, nums2, total / <span style="color:#3677a9">2</span> + <span style="color:#3677a9">1</span>)) *<span style="color:#3677a9">0.5</span>;
+		}
+	}
+
+	<span style="color:#6ab825;font-weight:bold">int</span> <span style="color:#447fcf">findKth</span>(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt; nums1, vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt; nums2, <span style="color:#6ab825;font-weight:bold">int</span> k) 
+	{
+
+		<span style="color:#6ab825;font-weight:bold">int</span> m = nums1.size();
+		<span style="color:#6ab825;font-weight:bold">int</span> n = nums2.size();
+
+		<span style="color:#6ab825;font-weight:bold">if</span> (m &gt; n)
+			<span style="color:#6ab825;font-weight:bold">return</span> findKth(nums2, nums1, k);
+		<span style="color:#6ab825;font-weight:bold">if</span> (m == <span style="color:#3677a9">0</span>)
+			<span style="color:#6ab825;font-weight:bold">return</span> nums2[k - <span style="color:#3677a9">1</span>];
+		<span style="color:#6ab825;font-weight:bold">if</span> (k == <span style="color:#3677a9">1</span>)
+			<span style="color:#6ab825;font-weight:bold">return</span> min(nums1[<span style="color:#3677a9">0</span>], nums2[<span style="color:#3677a9">0</span>]);
+		<span style="color:#6ab825;font-weight:bold">int</span> i = min(m, k / <span style="color:#3677a9">2</span>), j = min(n, k / <span style="color:#3677a9">2</span>);
+
+		<span style="color:#6ab825;font-weight:bold">if</span> (nums1[i - <span style="color:#3677a9">1</span>] &gt; nums2[j - <span style="color:#3677a9">1</span>]) 
+		{
+			<span style="color:#6ab825;font-weight:bold">return</span> findKth(nums1, vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;(nums2.begin() + j, nums2.end()), k - j);
+		}
+		<span style="color:#6ab825;font-weight:bold">else</span> 
+		{
+			<span style="color:#6ab825;font-weight:bold">return</span> findKth(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;(nums1.begin() + i, nums1.end()), nums2, k - i);
+		}
+		<span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#3677a9">0</span>;
+	}
+	
+</code></pre></div>
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+<div id="disqus_thread"></div>
+<script>
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://falcontw.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+        
+            <a class="nav nav-prev" href="/codingquestions/array/" title="Array"> <i class="fa fa-angle-left"></i></a>
+        
+        
+            <a class="nav nav-next" href="/learninghistory/" title="Learning History" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1536986012"></script>
+    <script src="/js/perfect-scrollbar.min.js?1536986012"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1536986012"></script>
+    <script src="/js/jquery.sticky.js?1536986012"></script>
+    <script src="/js/featherlight.min.js?1536986012"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1536986012"></script>
+    <script src="/js/highlight.pack.js?1536986012"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom.71422.js?1536986012"></script>
+    <script src="/js/learn.js?1536986012"></script>
+    <script src="/js/hugo-learn.js?1536986012"></script>
+
+    <link href="/mermaid/mermaid.css?1536986012" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1536986012"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>

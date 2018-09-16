@@ -1,0 +1,8 @@
+baseURL = "http://falcontw.me/"
+title = "Hanswu"
+theme = "rayark-theme"
+pygmentsCodefences = true
+pygmentsStyle = "native"
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+

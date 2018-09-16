@@ -1,0 +1,64 @@
+[
+{
+	"uri": "http://falcontw.me/learninghistory/",
+	"title": "Learning History",
+	"tags": [],
+	"description": "",
+	"content": " \nNot limited to Computer science. "
+},
+{
+	"uri": "http://falcontw.me/codingquestions/",
+	"title": "Coding Questions",
+	"tags": [],
+	"description": "",
+	"content": " \nLeetcode / Hackerrank. "
+},
+{
+	"uri": "http://falcontw.me/learninghistory/softwareengineering/solidprinciple/",
+	"title": "SOLID Principle",
+	"tags": [],
+	"description": "",
+	"content": " What is SOLID principle ? SOLID stands for five basic principles of object-oriented programming and design. The intention is that these principles, when applied together, will make it more likely that a programmer will create a system that is easy to maintain and extend over time.The principles of SOLID are guidelines that can be applied while working on software to remove code smells by providing a framework through which the programmer may refactor the software\u0026rsquo;s source code until it is both legible and extensible.\nSOLID stands for： Single-responsibility principle Open-closed principle Liskov substitution principle Interface segregation principle Dependency inversion principle\n[SINGLE-RESPONSIBILITY PRINCIPLE] Definition: A class should have only one reason to change.\n"
+},
+{
+	"uri": "http://falcontw.me/learninghistory/softwareengineering/",
+	"title": "Software Engineering",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "http://falcontw.me/codingquestions/array/median_of_two_sorted_array_with_different_size/",
+	"title": "Median of 2 sorted array",
+	"tags": [],
+	"description": "",
+	"content": " Questions Link\nThere are two sorted arrays nums1 and nums2 of size m and n respectively.\nFind the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).\nYou may assume nums1 and nums2 cannot be both empty.\nSolution This is indeed an kth smalleset element questions. The kth value turns to be median in this case.\nSince we need to implement this within logarithmic time. We need to take advantage of Binary Search.\nThe point is that it\u0026rsquo;s not what is left but what we delete matters.\nSuppose there is two array called A and B.\nA: 1,3,5,6,10.\nB: 2,6,9,13\nand we wanna find the 7th element.\n7\u0026frasl;2 =3, So we take out the 3th element from A and B.\nA[2] = 5, B[2] =9\nHere we can see that B[2]\u0026gt;A[2] which means the 7th elements won\u0026rsquo;t be in the top 3 elements of A.\nThen we can remove the top 3 elemets of A and the problem is reduced to finding K = 7-K/2 = 4;\nA: 6,10\nB: 2,6,9,13\nK/2 = 2 =\u0026gt; A[1] = 10, B[2] = 9;\nA[1] \u0026gt; B[1]; Remove the top elements of B\nK= 4-2=2\nK/2 = 1\nA: 6,10 B: 9,13 A[0] = 6, B[0]=9\nB[0]\u0026gt;A[0] So we remove A[0]\nA: 10 B: 9,13 K = 2-1 = 1\nNow we can return the smallest one as the answer.\nNote that there will possily be Corner cases\n1.one array is empty, return the kth number of the nonempty array.  2.even number of total elements,we need to find two middle numbers and calculate the median.  3.k may be larger than the length of the smaller array.\ndouble findMedianSortedArrays(vector\u0026lt;int\u0026gt;\u0026amp; nums1, vector\u0026lt;int\u0026gt;\u0026amp; nums2) { int total = nums1.size() + nums2.size(); if (total % 2 != 0) { return findKth(nums1, nums2, total / 2 + 1); } else { return (findKth(nums1, nums2, total / 2) + findKth(nums1, nums2, total / 2 + 1)) *0.5; } } int findKth(vector\u0026lt;int\u0026gt; nums1, vector\u0026lt;int\u0026gt; nums2, int k) { int m = nums1.size(); int n = nums2.size(); if (m \u0026gt; n) return findKth(nums2, nums1, k); if (m == 0) return nums2[k - 1]; if (k == 1) return min(nums1[0], nums2[0]); int i = min(m, k / 2), j = min(n, k / 2); if (nums1[i - 1] \u0026gt; nums2[j - 1]) { return findKth(nums1, vector\u0026lt;int\u0026gt;(nums2.begin() + j, nums2.end()), k - j); } else { return findKth(vector\u0026lt;int\u0026gt;(nums1.begin() + i, nums1.end()), nums2, k - i); } return 0; } "
+},
+{
+	"uri": "http://falcontw.me/codingquestions/array/",
+	"title": "Array",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "http://falcontw.me/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "http://falcontw.me/",
+	"title": "Hanswu",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "http://falcontw.me/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

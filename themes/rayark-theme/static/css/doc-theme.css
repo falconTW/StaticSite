@@ -1,0 +1,272 @@
+body {
+	font-family: "Lato","Noto Sans TC", "微軟正黑體", "Microsoft JhengHei", "Microsoft YaHei", "微软雅黑", "Helvetica",sans-serif;
+
+	font-size: 17px !important;
+	color: #323232 !important;
+	font-weight: 400;
+	line-height: 1.67;
+}
+
+
+#sidebar{
+	background: #111;
+}
+
+#sidebar img{
+	width: 70%;
+	margin: 10% auto;
+}
+
+
+#sidebar a{
+	color: #aaa;
+}
+
+#sidebar a:hover {
+    color: #ffffff;
+}
+
+#sidebar ul {
+	font-family: 'Dosis','Open Sans Condensed', "Noto Sans TC", "微軟正黑體", "Microsoft JhengHei", "Microsoft YaHei", "微软雅黑", "Helvetica",sans-serif;
+}
+
+#sidebar #shortcuts h3{
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+
+#sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
+    background: #111111;
+}
+
+#sidebar option{
+	color: #111;
+}
+
+
+#header-wrapper {
+	background: #111;
+	border-bottom: none;
+	position: absolute;
+	height: 240px;
+	z-index: 1;
+}
+
+.highlightable {
+    height: 100% !important;
+    padding-top: 240px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+}
+
+#prefooter {
+	position: absolute;
+	bottom: 50px;
+	width: 100%;
+	z-index: 1;
+	background: #111;
+	height: 35px;
+    line-height: 35px;
+}
+
+.searchbox {
+	border: none;
+	background: #111;
+	box-sizing: border-box;
+	height: 35px;
+}
+
+.searchbox input{
+	outline: none;
+	border-radius: 0;
+	border-bottom: 1px solid hsla(0,0%,50%,.2);
+}
+
+.searchbox input:focus{
+	border-color: none;
+	box-shadow: none;
+}
+
+.searchbox input:hover{
+	border-bottom: 1px solid hsla(0,0%,50%,.8);
+}
+
+.searchbox input:focus{
+	border-bottom: 2px solid #239486;
+}
+
+
+#body a {
+	color: #0c93e4;
+	text-decoration: none;
+	-webkit-text-decoration-skip: ink;
+	text-decoration-skip: ink;
+}
+
+#body a.highlight{
+	text-decoration: none;
+	-webkit-text-decoration-skip: ink;
+	text-decoration-skip: ink;
+}
+#body a.highlight:after{
+	display: none !important;
+}
+#body a.highlight:hover, #body a.highlight:focus{
+	color: #0c93e4;
+	text-decoration: underline;
+}
+
+#body a:focus,#body  a:hover {
+	color: #0c93e4;
+	text-decoration: underline;
+}
+
+.anchor {
+	color: #0c93e4;
+}
+
+#body .padding {
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+#footer {
+	font-size: 8pt;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	padding: 0 1rem;
+	line-height: 50px;
+	background: #111;
+}
+
+
+/* nav */
+#body .nav, #body .nav:hover, #body .nav:focus{
+	text-decoration: none;
+	color: #999;
+}
+
+#body .nav:hover {
+    background: #f4f4f4;
+}
+
+
+
+code {
+	background: #e7e7e7;
+	border-radius: 2px;
+	padding: 2px 4px;
+	border: none;
+	color: #555;
+}
+
+code + .copy-to-clipboard{
+	background-color: #e7e7e7;
+	height: 1.45rem;
+}
+code + .copy-to-clipboard:hover{
+	background-color: #e0e0e0;
+}
+
+
+
+pre code + .copy-to-clipboard{
+	background-color: #e7e7e7;
+	height: 23px;
+	opacity: .3;
+}
+pre code + .copy-to-clipboard:hover {
+    background-color: #e7e7e7;
+    opacity: 1;
+}
+
+b, strong {
+    font-weight: inherit;
+    font-weight: bolder;
+}
+
+#body-inner pre {
+	background-color: #e7e7e7;
+	color: #555;
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	position: relative;
+	padding: 0;
+	border-radius: 2px;
+}
+pre code {
+    color: #555;
+
+}
+
+pre>code {
+    overflow-x: auto;
+    white-space: pre;
+    display: block;
+    padding: 1rem;
+}
+
+.hljs{
+	background-color: #e7e7e7;
+	color: #555 !important;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1.8em 0;
+    line-height: 1.33;
+    font-family: inherit;
+    word-wrap: break-word;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+h3 {
+	font-size: 1.3em;
+    -webkit-margin-before: 0.75em;
+    -webkit-margin-after: 0.75em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+h1:after, h2:after {
+    content: "";
+    display: block;
+    position: relative;
+    top: .33em;
+    border-bottom: 1px solid hsla(0,0%,50%,.2);
+}
+
+#chapter h1:after{
+	border-bottom: none;
+}
+
+#body-inner h2, #body-inner h3{
+	margin-top: 3em;
+}
+
+#body img.shadow, #body .video-container.shadow {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+th {
+	border: 1px solid #eaeaea;
+}
+
+blockquote {
+    color: rgba(0,0,0,.5);
+    padding-left: 1.5em;
+    border-left: 5px solid rgba(0,0,0,.075);
+}

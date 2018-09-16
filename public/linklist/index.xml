@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LinkList on Hanswu</title>
+    <link>http://falcontw.me/linklist/</link>
+    <description>Recent content in LinkList on Hanswu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 26 Aug 2018 21:26:37 +0800</lastBuildDate>
+    
+	<atom:link href="http://falcontw.me/linklist/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Intersection of two linklists</title>
+      <link>http://falcontw.me/linklist/intersection/</link>
+      <pubDate>Sun, 26 Aug 2018 21:26:37 +0800</pubDate>
+      
+      <guid>http://falcontw.me/linklist/intersection/</guid>
+      <description>Lorem Ipsum.</description>
+    </item>
+    
+  </channel>
+</rss>
