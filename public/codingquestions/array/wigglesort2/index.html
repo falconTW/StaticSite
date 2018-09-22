@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href=/images/favicon.ico type="image/x-icon" />
 <link rel="icon" href=/images/favicon.ico type="image/x-icon" />
-    <title>Learning History :: Hanswu</title>
+    <title>WiggleSort II :: Hanswu</title>
     
     
     <link href="/css/nucleus.css?1537161362" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learninghistory/">
+  <body class="" data-url="/codingquestions/array/wigglesort2/">
     <nav id="sidebar" class="">
 
 
@@ -77,8 +77,8 @@
   
     
     <li data-nav-id="/learninghistory/" title="Learning History" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/learninghistory/">
@@ -171,7 +171,7 @@
   
     
     <li data-nav-id="/codingquestions/" title="Coding Questions" class="dd-item 
-        
+        parent
         
         
         ">
@@ -198,7 +198,7 @@
   
     
     <li data-nav-id="/codingquestions/array/" title="Array" class="dd-item 
-        
+        parent
         
         
         ">
@@ -225,8 +225,8 @@
   
     
     <li data-nav-id="/codingquestions/array/wigglesort2/" title="WiggleSort II" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/codingquestions/array/wigglesort2/">
@@ -314,6 +314,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
                   <span class="links">
                     
           
@@ -322,7 +324,19 @@
             
           
           
-            <a href='/'>Hanswu</a> > Learning History
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/array/'>Array</a> > WiggleSort II
+          
+         
+          
+         
           
          
           
@@ -330,14 +344,28 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#solution">Solution</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
 
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h2>WiggleSort II</h2>
           
 
         
@@ -345,22 +373,37 @@
 
 
 
-<p><br />
-<br />
-<br />
-<br />
-<br />
-<br /></p>
+<p><a href="https://leetcode.com/problems/wiggle-sort-ii/">Questions Link</a></p>
 
-<h1 id="not-limited-to-computer-science">Not limited to Computer science.</h1>
+<p>Given an unsorted array nums, reorder it such that nums[0] &lt; nums[1] &gt; nums[2] &lt; nums[3]&hellip;.</p>
+
+<pre><code>Example 1:
+
+Input: nums = [1, 5, 1, 1, 6, 4]
+Output: One possible answer is [1, 4, 1, 5, 1, 6].
+Example 2:
+
+Input: nums = [1, 3, 2, 2, 3, 1]
+Output: One possible answer is [2, 3, 1, 3, 1, 2].
+</code></pre>
+
+<h2 id="solution">Solution</h2>
+
+<p>Sol A:</p>
+
+<p>We can simply sort this array and reorganize the array.</p>
+
+<p>After we sort the array, the array will be partitioned as the smaller part mid and the larger part.</p>
+
+<p>We pick the last element from the smaller part as the 1st element, then we pick another last element from the larger part as the 2nd element.</p>
+
+<p>This</p>
 
 
 <footer class=" footline" >
 	
 </footer>
 
-        
-            </div> 
         
         </div> 
         
@@ -401,61 +444,8 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -498,11 +488,69 @@ s.setAttribute('data-timestamp', +new Date());
             
         
                     
+            
+        
+                    
+            
+        
+                    
                         
             
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -527,10 +575,10 @@ s.setAttribute('data-timestamp', +new Date());
 
 
         
-            <a class="nav nav-prev" href="/" title="Hanswu"> <i class="fa fa-angle-left"></i></a>
+            <a class="nav nav-prev" href="/codingquestions/array/" title="Array"> <i class="fa fa-angle-left"></i></a>
         
         
-            <a class="nav nav-next" href="/learninghistory/softwareengineering/" title="Software Engineering" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+            <a class="nav nav-next" href="/codingquestions/array/median_of_two_sorted_array_with_different_size/" title="Median of 2 sorted array" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
         
     </div>
 

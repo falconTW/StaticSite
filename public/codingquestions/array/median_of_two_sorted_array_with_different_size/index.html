@@ -12,19 +12,19 @@
     <title>Median of 2 sorted array :: Hanswu</title>
     
     
-    <link href="/css/nucleus.css?1536986012" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1536986012" rel="stylesheet">
+    <link href="/css/nucleus.css?1537161362" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1537161362" rel="stylesheet">
     
-    <link href="/css/featherlight.min.css?1536986012" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1536986012" rel="stylesheet">
-    <link href="/css/auto-complete.css?1536986012" rel="stylesheet">
-    <link href="/css/theme.css?1536986012" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1536986012" rel="stylesheet">
-    <link href="/css/doc-theme.css?1536986012" rel="stylesheet">
-    <link href="/css/mobile-doc-theme.css?1536986012" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1537161362" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1537161362" rel="stylesheet">
+    <link href="/css/auto-complete.css?1537161362" rel="stylesheet">
+    <link href="/css/theme.css?1537161362" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1537161362" rel="stylesheet">
+    <link href="/css/doc-theme.css?1537161362" rel="stylesheet">
+    <link href="/css/mobile-doc-theme.css?1537161362" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1536986012"></script>
+    <script src="/js/jquery-2.x.min.js?1537161362"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1536986012"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1536986012"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1537161362"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1537161362"></script>
 <script type="text/javascript">
     
         var baseurl = '\/';
     
 </script>
-<script type="text/javascript" src="/js/search.js?1536986012"></script>
+<script type="text/javascript" src="/js/search.js?1537161362"></script>
 
     
   </div>
@@ -224,6 +224,30 @@
  
   
     
+    <li data-nav-id="/codingquestions/array/wigglesort2/" title="WiggleSort II" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/wigglesort2/">
+          WiggleSort II
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
     <li data-nav-id="/codingquestions/array/median_of_two_sorted_array_with_different_size/" title="Median of 2 sorted array" class="dd-item 
         parent
         active
@@ -351,11 +375,25 @@
 
 <p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/description/">Questions Link</a></p>
 
-<p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<pre><code>Example 1:
 
-<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+nums1 = [1, 3]
+nums2 = [2]
 
-<p>You may assume nums1 and nums2 cannot be both empty.</p>
+The median is 2.0
+Example 2:
+
+nums1 = [1, 2]
+nums2 = [3, 4]
+
+The median is (2 + 3)/2 = 2.5
+
+There are two sorted arrays nums1 and nums2 of size m and n respectively.
+
+Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+
+You may assume nums1 and nums2 cannot be both empty.
+</code></pre>
 
 <h2 id="solution">Solution</h2>
 
@@ -408,45 +446,45 @@
 2.even number of total elements,we need to find two middle numbers and calculate the median.
 </br>
 3.k may be larger than the length of the smaller array.</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">	<span style="color:#6ab825;font-weight:bold">double</span> <span style="color:#447fcf">findMedianSortedArrays</span>(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;&amp; nums1, vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;&amp; nums2) 
-	{
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">    <span style="color:#6ab825;font-weight:bold">double</span> <span style="color:#447fcf">findMedianSortedArrays</span>(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;&amp; nums1, vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;&amp; nums2) 
+    {
 
-		<span style="color:#6ab825;font-weight:bold">int</span> total = nums1.size() + nums2.size();
-		<span style="color:#6ab825;font-weight:bold">if</span> (total % <span style="color:#3677a9">2</span> != <span style="color:#3677a9">0</span>)
-		{
-			<span style="color:#6ab825;font-weight:bold">return</span> findKth(nums1, nums2, total / <span style="color:#3677a9">2</span> + <span style="color:#3677a9">1</span>);
-		}
-		<span style="color:#6ab825;font-weight:bold">else</span>
-		{
-			<span style="color:#6ab825;font-weight:bold">return</span> (findKth(nums1, nums2, total / <span style="color:#3677a9">2</span>) + findKth(nums1, nums2, total / <span style="color:#3677a9">2</span> + <span style="color:#3677a9">1</span>)) *<span style="color:#3677a9">0.5</span>;
-		}
-	}
+        <span style="color:#6ab825;font-weight:bold">int</span> total = nums1.size() + nums2.size();
+        <span style="color:#6ab825;font-weight:bold">if</span> (total % <span style="color:#3677a9">2</span> != <span style="color:#3677a9">0</span>)
+        {
+            <span style="color:#6ab825;font-weight:bold">return</span> findKth(nums1, nums2, total / <span style="color:#3677a9">2</span> + <span style="color:#3677a9">1</span>);
+        }
+        <span style="color:#6ab825;font-weight:bold">else</span>
+        {
+            <span style="color:#6ab825;font-weight:bold">return</span> (findKth(nums1, nums2, total / <span style="color:#3677a9">2</span>) + findKth(nums1, nums2, total / <span style="color:#3677a9">2</span> + <span style="color:#3677a9">1</span>)) *<span style="color:#3677a9">0.5</span>;
+        }
+    }
 
-	<span style="color:#6ab825;font-weight:bold">int</span> <span style="color:#447fcf">findKth</span>(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt; nums1, vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt; nums2, <span style="color:#6ab825;font-weight:bold">int</span> k) 
-	{
+    <span style="color:#6ab825;font-weight:bold">int</span> <span style="color:#447fcf">findKth</span>(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt; nums1, vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt; nums2, <span style="color:#6ab825;font-weight:bold">int</span> k) 
+    {
 
-		<span style="color:#6ab825;font-weight:bold">int</span> m = nums1.size();
-		<span style="color:#6ab825;font-weight:bold">int</span> n = nums2.size();
+        <span style="color:#6ab825;font-weight:bold">int</span> m = nums1.size();
+        <span style="color:#6ab825;font-weight:bold">int</span> n = nums2.size();
 
-		<span style="color:#6ab825;font-weight:bold">if</span> (m &gt; n)
-			<span style="color:#6ab825;font-weight:bold">return</span> findKth(nums2, nums1, k);
-		<span style="color:#6ab825;font-weight:bold">if</span> (m == <span style="color:#3677a9">0</span>)
-			<span style="color:#6ab825;font-weight:bold">return</span> nums2[k - <span style="color:#3677a9">1</span>];
-		<span style="color:#6ab825;font-weight:bold">if</span> (k == <span style="color:#3677a9">1</span>)
-			<span style="color:#6ab825;font-weight:bold">return</span> min(nums1[<span style="color:#3677a9">0</span>], nums2[<span style="color:#3677a9">0</span>]);
-		<span style="color:#6ab825;font-weight:bold">int</span> i = min(m, k / <span style="color:#3677a9">2</span>), j = min(n, k / <span style="color:#3677a9">2</span>);
+        <span style="color:#6ab825;font-weight:bold">if</span> (m &gt; n)
+            <span style="color:#6ab825;font-weight:bold">return</span> findKth(nums2, nums1, k);
+        <span style="color:#6ab825;font-weight:bold">if</span> (m == <span style="color:#3677a9">0</span>)
+            <span style="color:#6ab825;font-weight:bold">return</span> nums2[k - <span style="color:#3677a9">1</span>];
+        <span style="color:#6ab825;font-weight:bold">if</span> (k == <span style="color:#3677a9">1</span>)
+            <span style="color:#6ab825;font-weight:bold">return</span> min(nums1[<span style="color:#3677a9">0</span>], nums2[<span style="color:#3677a9">0</span>]);
+        <span style="color:#6ab825;font-weight:bold">int</span> i = min(m, k / <span style="color:#3677a9">2</span>), j = min(n, k / <span style="color:#3677a9">2</span>);
 
-		<span style="color:#6ab825;font-weight:bold">if</span> (nums1[i - <span style="color:#3677a9">1</span>] &gt; nums2[j - <span style="color:#3677a9">1</span>]) 
-		{
-			<span style="color:#6ab825;font-weight:bold">return</span> findKth(nums1, vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;(nums2.begin() + j, nums2.end()), k - j);
-		}
-		<span style="color:#6ab825;font-weight:bold">else</span> 
-		{
-			<span style="color:#6ab825;font-weight:bold">return</span> findKth(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;(nums1.begin() + i, nums1.end()), nums2, k - i);
-		}
-		<span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#3677a9">0</span>;
-	}
-	
+        <span style="color:#6ab825;font-weight:bold">if</span> (nums1[i - <span style="color:#3677a9">1</span>] &gt; nums2[j - <span style="color:#3677a9">1</span>]) 
+        {
+            <span style="color:#6ab825;font-weight:bold">return</span> findKth(nums1, vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;(nums2.begin() + j, nums2.end()), k - j);
+        }
+        <span style="color:#6ab825;font-weight:bold">else</span> 
+        {
+            <span style="color:#6ab825;font-weight:bold">return</span> findKth(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;(nums1.begin() + i, nums1.end()), nums2, k - i);
+        }
+        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#3677a9">0</span>;
+    }
+    
 </code></pre></div>
 
 <footer class=" footline" >
@@ -580,6 +618,25 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -605,10 +662,10 @@ s.setAttribute('data-timestamp', +new Date());
 
 
         
-            <a class="nav nav-prev" href="/codingquestions/array/" title="Array"> <i class="fa fa-angle-left"></i></a>
+            <a class="nav nav-prev" href="/codingquestions/array/wigglesort2/" title="WiggleSort II"> <i class="fa fa-angle-left"></i></a>
         
         
-            <a class="nav nav-next" href="/learninghistory/" title="Learning History" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+            <a class="nav nav-next" href="/codingquestions/array/wigglesort2/" title="WiggleSort II" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
         
     </div>
 
@@ -617,20 +674,20 @@ s.setAttribute('data-timestamp', +new Date());
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1536986012"></script>
-    <script src="/js/perfect-scrollbar.min.js?1536986012"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1536986012"></script>
-    <script src="/js/jquery.sticky.js?1536986012"></script>
-    <script src="/js/featherlight.min.js?1536986012"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1536986012"></script>
-    <script src="/js/highlight.pack.js?1536986012"></script>
+    <script src="/js/clipboard.min.js?1537161362"></script>
+    <script src="/js/perfect-scrollbar.min.js?1537161362"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1537161362"></script>
+    <script src="/js/jquery.sticky.js?1537161362"></script>
+    <script src="/js/featherlight.min.js?1537161362"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1537161362"></script>
+    <script src="/js/highlight.pack.js?1537161362"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1536986012"></script>
-    <script src="/js/learn.js?1536986012"></script>
-    <script src="/js/hugo-learn.js?1536986012"></script>
+    <script src="/js/modernizr.custom.71422.js?1537161362"></script>
+    <script src="/js/learn.js?1537161362"></script>
+    <script src="/js/hugo-learn.js?1537161362"></script>
 
-    <link href="/mermaid/mermaid.css?1536986012" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1536986012"></script>
+    <link href="/mermaid/mermaid.css?1537161362" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1537161362"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
