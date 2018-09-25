@@ -31,3 +31,30 @@ cache.get(1);       // returns -1 (not found)
 cache.get(3);       // returns 3
 cache.get(4);       // returns 4
 ```
+
+## Solution
+
+#### Using hashtable -> TLE
+
+Using input key as the key of the map and the value is composed of the value and a time stamp.
+
+The least being used is the value, the smaller is the time stamp. 
+
+```
+get(int key) :  Set time of target entry to 0, and the time of the rest entries are deducted by one.
+```
+```
+put(int key) : If capacity is not yet full,insert the key and value, set time to zero, 
+
+               or delete the entry with the smallest time and insert the new one. 
+```
+
+Time complexity is O(1) when getting value but deducting time is time wasting that leads to TLE.
+
+#### Using Linkedlist ->TLE
+
+Search for target entry is time wasting, not O(1).
+
+#### Using DoublyLinkedlist + map
+
+
