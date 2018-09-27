@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href=/images/favicon.ico type="image/x-icon" />
 <link rel="icon" href=/images/favicon.ico type="image/x-icon" />
-    <title>Categories :: Hanswu</title>
+    <title>LRU Cache :: Hanswu</title>
     
     
     <link href="/css/nucleus.css?1538065303" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/codingquestions/systemdesign/lru_cache/">
     <nav id="sidebar" class="">
 
 
@@ -171,7 +171,7 @@
   
     
     <li data-nav-id="/codingquestions/" title="Coding Questions" class="dd-item 
-        
+        parent
         
         
         ">
@@ -306,8 +306,8 @@
   
     
     <li data-nav-id="/codingquestions/systemdesign/" title="SystemDesigns" class="dd-item 
+        parent
         
-        active
         
         ">
       <a href="/codingquestions/systemdesign/">
@@ -333,8 +333,8 @@
   
     
     <li data-nav-id="/codingquestions/systemdesign/lru_cache/" title="LRU Cache" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/codingquestions/systemdesign/lru_cache/">
@@ -367,7 +367,7 @@
     
     <li data-nav-id="/codingquestions/tree/" title="Trees" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/codingquestions/tree/">
@@ -488,7 +488,25 @@
                     
           
           
-            Categories
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/systemdesign/'>SystemDesigns</a> > LRU Cache
+          
+         
+          
+         
+          
+         
           
            
                   </span>
@@ -496,7 +514,22 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#solution">Solution</a>
+<ul>
+<li>
+<ul>
+<li><a href="#using-hashtable-tle">Using hashtable -&gt; TLE</a></li>
+<li><a href="#using-linkedlist-tle">Using Linkedlist -&gt;TLE</a></li>
+<li><a href="#using-doublylinkedlist-hashtable">Using DoublyLinkedlist + Hashtable</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -508,13 +541,165 @@
         
         <div id="body-inner">
           
-            <h2>Categories</h2>
+            <h2>LRU Cache</h2>
           
 
         
 
 
 
+
+<p><a href="https://leetcode.com/problems/lru-cache/description/">Questions Link</a></p>
+
+<p>Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.</p>
+
+<p>get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.</p>
+
+<p>put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity,</p>
+
+<p>it should invalidate the least recently used item before inserting a new item.</p>
+
+<p>Follow up:
+Could you do both operations in O(1) time complexity?</p>
+
+<p>Example:</p>
+
+<pre><code>LRUCache cache = new LRUCache( 2 /* capacity */ );
+
+cache.put(1, 1);
+cache.put(2, 2);
+cache.get(1);       // returns 1
+cache.put(3, 3);    // evicts key 2
+cache.get(2);       // returns -1 (not found)
+cache.put(4, 4);    // evicts key 1
+cache.get(1);       // returns -1 (not found)
+cache.get(3);       // returns 3
+cache.get(4);       // returns 4
+</code></pre>
+
+<h2 id="solution">Solution</h2>
+
+<h4 id="using-hashtable-tle">Using hashtable -&gt; TLE</h4>
+
+<p>Using input key as the key of the map and the value is composed of the value and a time stamp.</p>
+
+<p>The least being used is the value, the smaller is the time stamp.</p>
+
+<pre><code>get(int key) :  Set time of target entry to 0, and the time of the rest entries are deducted by one.
+</code></pre>
+
+<pre><code>put(int key) : If capacity is not yet full,insert the key and value, set time to zero, 
+
+               or delete the entry with the smallest time and insert the new one. 
+</code></pre>
+
+<p>Time complexity is O(1) when getting value but deducting time is time wasting that leads to TLE.</p>
+
+<h4 id="using-linkedlist-tle">Using Linkedlist -&gt;TLE</h4>
+
+<p>Search for target entry is time wasting, not O(1).</p>
+
+<h4 id="using-doublylinkedlist-hashtable">Using DoublyLinkedlist + Hashtable</h4>
+
+<p>Double-linked list along with Hashtable can ensure all the operations are O(1) complexity;</p>
+
+<p>When we are trying to get the value, we visit the map, if there is need to modify the doubly linkedlist,</p>
+
+<p>we don&rsquo;t need to search from the very beginning.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#6ab825;font-weight:bold">struct</span> LRUElement
+{
+    <span style="color:#6ab825;font-weight:bold">int</span> key;
+    <span style="color:#6ab825;font-weight:bold">int</span> value;
+    LRUElement* prev;
+    LRUElement* next;
+    LRUElement() :key(<span style="color:#3677a9">0</span>), value(<span style="color:#3677a9">0</span>), prev(<span style="color:#24909d">NULL</span>), next(<span style="color:#24909d">NULL</span>) {};
+};
+
+<span style="color:#6ab825;font-weight:bold">class</span><span style="color:#a61717;background-color:#e3d2d2"> </span><span style="color:#447fcf;text-decoration:underline">LRUCache</span> 
+{
+    <span style="color:#6ab825;font-weight:bold">private</span>:
+        <span style="color:#6ab825;font-weight:bold">int</span> _capacity;
+        <span style="color:#6ab825;font-weight:bold">int</span> _count;
+        LRUElement* head;
+        LRUElement* tail;
+        unordered_map&lt;<span style="color:#6ab825;font-weight:bold">int</span>, LRUElement*&gt; map;
+
+        <span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">_DetachNode</span>(LRUElement* node)
+        {
+            node-&gt;prev-&gt;next = node-&gt;next;
+            node-&gt;next-&gt;prev = node-&gt;prev;
+        }
+
+        <span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">_MoveToFront</span>(LRUElement* node)
+        {
+            node-&gt;next = head-&gt;next;
+            node-&gt;prev = head;
+            head-&gt;next = node;
+            node-&gt;next-&gt;prev = node;
+        }
+
+        <span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">_RemoveTailNode</span>()
+        {
+            LRUElement* node = tail-&gt;prev;
+            _DetachNode(node);
+            map.erase(node-&gt;key);
+            --_count;
+        }
+
+    <span style="color:#6ab825;font-weight:bold">public</span>:
+        LRUCache(<span style="color:#6ab825;font-weight:bold">int</span> capacity)
+        {
+            _capacity = capacity;
+            _count = <span style="color:#3677a9">0</span>;
+            head = <span style="color:#6ab825;font-weight:bold">new</span> LRUElement();
+            tail = <span style="color:#6ab825;font-weight:bold">new</span> LRUElement();
+            head-&gt;prev = <span style="color:#24909d">NULL</span>;
+            head-&gt;next = tail;
+            tail-&gt;prev = head;
+            tail-&gt;next = <span style="color:#24909d">NULL</span>;
+        }
+
+        <span style="color:#6ab825;font-weight:bold">int</span> get(<span style="color:#6ab825;font-weight:bold">int</span> key)
+        {
+            <span style="color:#6ab825;font-weight:bold">if</span> (map.find(key) == map.end())
+            {
+                <span style="color:#6ab825;font-weight:bold">return</span> -<span style="color:#3677a9">1</span>;
+            }
+            <span style="color:#6ab825;font-weight:bold">else</span>
+            {
+                LRUElement* node = map[key];
+                _DetachNode(node);
+                _MoveToFront(node);
+                <span style="color:#6ab825;font-weight:bold">return</span> node-&gt;value;
+            }
+        }
+
+        <span style="color:#6ab825;font-weight:bold">void</span> put(<span style="color:#6ab825;font-weight:bold">int</span> key, <span style="color:#6ab825;font-weight:bold">int</span> value)
+        {
+            <span style="color:#6ab825;font-weight:bold">if</span> (map.find(key)==map.end())
+            {
+                LRUElement* node = <span style="color:#6ab825;font-weight:bold">new</span> LRUElement();
+                <span style="color:#6ab825;font-weight:bold">if</span> (_count == _capacity)
+                {
+                    _RemoveTailNode();
+                }
+
+                node -&gt; key = key;
+                node-&gt;value = value;
+                map[key] = node;
+                _MoveToFront(node);
+                ++_count;
+            }
+            <span style="color:#6ab825;font-weight:bold">else</span>
+            {
+                LRUElement* node = map[key];
+                _DetachNode(node);
+                node-&gt;value = value;
+                _MoveToFront(node);
+            }
+        }
+};
+</code></pre></div>
 
 <footer class=" footline" >
 	
@@ -615,20 +800,6 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -645,90 +816,8 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -772,6 +861,111 @@ s.setAttribute('data-timestamp', +new Date());
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -785,8 +979,10 @@ s.setAttribute('data-timestamp', +new Date());
 
 
         
+            <a class="nav nav-prev" href="/codingquestions/systemdesign/" title="SystemDesigns"> <i class="fa fa-angle-left"></i></a>
         
-            <a class="nav nav-next" href="/learninghistory/" title="Learning History" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+        
+            <a class="nav nav-next" href="/codingquestions/tree/" title="Trees" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
         
     </div>
 

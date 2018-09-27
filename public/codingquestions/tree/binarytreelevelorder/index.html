@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href=/images/favicon.ico type="image/x-icon" />
 <link rel="icon" href=/images/favicon.ico type="image/x-icon" />
-    <title>Categories :: Hanswu</title>
+    <title>BinaryTreeLevelOrder :: Hanswu</title>
     
     
     <link href="/css/nucleus.css?1538065303" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/codingquestions/tree/binarytreelevelorder/">
     <nav id="sidebar" class="">
 
 
@@ -171,7 +171,7 @@
   
     
     <li data-nav-id="/codingquestions/" title="Coding Questions" class="dd-item 
-        
+        parent
         
         
         ">
@@ -307,7 +307,7 @@
     
     <li data-nav-id="/codingquestions/systemdesign/" title="SystemDesigns" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/codingquestions/systemdesign/">
@@ -366,8 +366,8 @@
   
     
     <li data-nav-id="/codingquestions/tree/" title="Trees" class="dd-item 
+        parent
         
-        active
         
         ">
       <a href="/codingquestions/tree/">
@@ -393,8 +393,8 @@
   
     
     <li data-nav-id="/codingquestions/tree/binarytreelevelorder/" title="BinaryTreeLevelOrder" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/codingquestions/tree/binarytreelevelorder/">
@@ -488,7 +488,25 @@
                     
           
           
-            Categories
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/tree/'>Trees</a> > BinaryTreeLevelOrder
+          
+         
+          
+         
+          
+         
           
            
                   </span>
@@ -496,7 +514,14 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#solution-1">Solution 1</a></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -508,13 +533,72 @@
         
         <div id="body-inner">
           
-            <h2>Categories</h2>
+            <h2>BinaryTreeLevelOrder</h2>
           
 
         
 
 
 
+
+<p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/description/">Questions Link</a></p>
+
+<p>Given a binary tree, return the level order traversal of its nodes&rsquo; values. (ie, from left to right, level by level).</p>
+
+<p>For example:
+Given binary tree [3,9,20,null,null,15,7],</p>
+
+<pre><code>    3
+   / \
+  9  20
+    /  \
+   15   7
+return its level order traversal as:
+[
+  [3],
+  [9,20],
+  [15,7]
+]
+</code></pre>
+
+<h2 id="solution-1">Solution 1</h2>
+
+<p>BFS is the one of the most common ways to solve this questions.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;&gt; levelOrder(TreeNode* root) 
+{
+    vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;&gt; totalResult;
+    <span style="color:#6ab825;font-weight:bold">if</span> (root == <span style="color:#24909d">NULL</span>)
+    {
+        <span style="color:#6ab825;font-weight:bold">return</span> totalResult;
+    }
+
+    queue&lt;TreeNode*&gt; q;
+    q.push(root);
+
+    <span style="color:#6ab825;font-weight:bold">while</span> (!q.empty())
+    {
+        <span style="color:#6ab825;font-weight:bold">int</span> size = q.size();
+        vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt; res;
+        <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">int</span> i = <span style="color:#3677a9">0</span>; i &lt; size; ++i)
+        {
+            TreeNode* node = q.front();
+            res.push_back(node-&gt;val);
+            q.pop();
+            <span style="color:#6ab825;font-weight:bold">if</span> (node-&gt;left)
+            {
+                q.push(node-&gt;left);
+            }
+            <span style="color:#6ab825;font-weight:bold">if</span> (node-&gt;right)
+            {
+                q.push(node-&gt;right);
+            }
+        }
+        totalResult.push_back(res);
+    }
+
+    <span style="color:#6ab825;font-weight:bold">return</span> totalResult;
+}
+</code></pre></div>
 
 <footer class=" footline" >
 	
@@ -615,6 +699,7 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
+                    
                 
                 
 
@@ -629,6 +714,9 @@ s.setAttribute('data-timestamp', +new Date());
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -671,40 +759,6 @@ s.setAttribute('data-timestamp', +new Date());
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
                     
                         
             
@@ -756,11 +810,50 @@ s.setAttribute('data-timestamp', +new Date());
             
         
                     
+            
+        
+                    
                         
             
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -785,8 +878,10 @@ s.setAttribute('data-timestamp', +new Date());
 
 
         
+            <a class="nav nav-prev" href="/codingquestions/tree/" title="Trees"> <i class="fa fa-angle-left"></i></a>
         
-            <a class="nav nav-next" href="/learninghistory/" title="Learning History" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+        
+            <a class="nav nav-next" href="/codingquestions/tree/validatebst/" title="ValidateBST" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
         
     </div>
 

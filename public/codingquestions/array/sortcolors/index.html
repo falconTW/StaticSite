@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href=/images/favicon.ico type="image/x-icon" />
 <link rel="icon" href=/images/favicon.ico type="image/x-icon" />
-    <title>Categories :: Hanswu</title>
+    <title>SortColors :: Hanswu</title>
     
     
     <link href="/css/nucleus.css?1538065303" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/codingquestions/array/sortcolors/">
     <nav id="sidebar" class="">
 
 
@@ -171,7 +171,7 @@
   
     
     <li data-nav-id="/codingquestions/" title="Coding Questions" class="dd-item 
-        
+        parent
         
         
         ">
@@ -198,7 +198,7 @@
   
     
     <li data-nav-id="/codingquestions/array/" title="Array" class="dd-item 
-        
+        parent
         
         
         ">
@@ -225,8 +225,8 @@
   
     
     <li data-nav-id="/codingquestions/array/sortcolors/" title="SortColors" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/codingquestions/array/sortcolors/">
@@ -307,7 +307,7 @@
     
     <li data-nav-id="/codingquestions/systemdesign/" title="SystemDesigns" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/codingquestions/systemdesign/">
@@ -367,7 +367,7 @@
     
     <li data-nav-id="/codingquestions/tree/" title="Trees" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/codingquestions/tree/">
@@ -488,7 +488,25 @@
                     
           
           
-            Categories
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/array/'>Array</a> > SortColors
+          
+         
+          
+         
+          
+         
           
            
                   </span>
@@ -496,7 +514,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#solution-1">Solution 1</a></li>
+<li><a href="#solution-2">Solution 2</a></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -508,13 +534,86 @@
         
         <div id="body-inner">
           
-            <h2>Categories</h2>
+            <h2>SortColors</h2>
           
 
         
 
 
 
+
+<p><a href="https://leetcode.com/problems/sort-colors/description/">Questions Link</a></p>
+
+<p>Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+
+<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
+
+<p>Note: You are not suppose to use the library&rsquo;s sort function for this problem.</p>
+
+<pre><code>Example:
+
+Input: [2,0,2,1,1,0]
+
+Output: [0,0,1,1,2,2]
+
+Follow up:
+</code></pre>
+
+<p>A rather straight forward solution is a two-pass algorithm using counting sort.
+First, iterate the array counting number of 0&rsquo;s, 1&rsquo;s, and 2&rsquo;s, then overwrite array with total number of 0&rsquo;s, then 1&rsquo;s and followed by 2&rsquo;s.
+Could you come up with a one-pass algorithm using only constant space?</p>
+
+<h2 id="solution-1">Solution 1</h2>
+
+<p>The two pass method is simple. We may just try to record the times each number appears.</p>
+
+<p>And restore the numbers back to the result.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#6ab825;font-weight:bold">class</span><span style="color:#a61717;background-color:#e3d2d2"> </span><span style="color:#447fcf;text-decoration:underline">Solution</span> {
+<span style="color:#6ab825;font-weight:bold">public</span>:
+    <span style="color:#6ab825;font-weight:bold">void</span> sortColors(<span style="color:#6ab825;font-weight:bold">int</span> A[], <span style="color:#6ab825;font-weight:bold">int</span> n) {
+        <span style="color:#6ab825;font-weight:bold">int</span> count[<span style="color:#3677a9">3</span>] = {<span style="color:#3677a9">0</span>}, idx = <span style="color:#3677a9">0</span>;
+        <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">int</span> i = <span style="color:#3677a9">0</span>; i &lt; n; ++i) ++count[A[i]];
+        <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">int</span> i = <span style="color:#3677a9">0</span>; i &lt; <span style="color:#3677a9">3</span>; ++i) {
+            <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">int</span> j = <span style="color:#3677a9">0</span>; j &lt; count[i]; ++j) {
+                A[idx++] = i;
+            }
+        }
+    }
+};
+</code></pre></div>
+<h2 id="solution-2">Solution 2</h2>
+
+<p>Since the order is not strictly ascending,so we don&rsquo;t really need to sort the whole array,</p>
+
+<p>what we need to come to in mind is the method in Quick sort which helps to partition the array</p>
+
+<p>according to the chosen pivot.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">sortColors</span>(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;&amp; nums) 
+    {
+        <span style="color:#6ab825;font-weight:bold">int</span> left =<span style="color:#3677a9">0</span>;
+        <span style="color:#6ab825;font-weight:bold">int</span> right =nums.size()-<span style="color:#3677a9">1</span>;
+        <span style="color:#6ab825;font-weight:bold">int</span> pivot=<span style="color:#3677a9">0</span>;
+        
+        <span style="color:#6ab825;font-weight:bold">while</span>(left&lt;=right)
+        {
+            <span style="color:#6ab825;font-weight:bold">if</span>(nums[left]==<span style="color:#3677a9">2</span>)
+            {
+                swap(nums[left],nums[right--]);
+               
+            }
+            <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span>(nums[left]==<span style="color:#3677a9">0</span>)
+            {
+                swap(nums[left++],nums[pivot++]);
+            }
+            <span style="color:#6ab825;font-weight:bold">else</span>
+            {
+                left++;
+            }
+            
+        }
+        
+    }
+</code></pre></div>
 
 <footer class=" footline" >
 	
@@ -615,20 +714,6 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -644,6 +729,23 @@ s.setAttribute('data-timestamp', +new Date());
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -661,21 +763,8 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -687,24 +776,6 @@ s.setAttribute('data-timestamp', +new Date());
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
                     
                         
             
@@ -756,6 +827,40 @@ s.setAttribute('data-timestamp', +new Date());
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -785,8 +890,10 @@ s.setAttribute('data-timestamp', +new Date());
 
 
         
+            <a class="nav nav-prev" href="/codingquestions/array/" title="Array"> <i class="fa fa-angle-left"></i></a>
         
-            <a class="nav nav-next" href="/learninghistory/" title="Learning History" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+        
+            <a class="nav nav-next" href="/codingquestions/array/wigglesort2/" title="WiggleSort II" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
         
     </div>
 

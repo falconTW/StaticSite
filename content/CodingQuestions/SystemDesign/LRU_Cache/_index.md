@@ -55,6 +55,108 @@ Time complexity is O(1) when getting value but deducting time is time wasting th
 
 Search for target entry is time wasting, not O(1).
 
-#### Using DoublyLinkedlist + map
+#### Using DoublyLinkedlist + Hashtable
+
+Double-linked list along with Hashtable can ensure all the operations are O(1) complexity;
+
+When we are trying to get the value, we visit the map, if there is need to modify the doubly linkedlist,
+
+we don't need to search from the very beginning.
+
+```C++
+struct LRUElement
+{
+	int key;
+	int value;
+	LRUElement* prev;
+	LRUElement* next;
+	LRUElement() :key(0), value(0), prev(NULL), next(NULL) {};
+};
+
+class LRUCache 
+{
+	private:
+		int _capacity;
+		int _count;
+		LRUElement* head;
+		LRUElement* tail;
+		unordered_map<int, LRUElement*> map;
+
+		void _DetachNode(LRUElement* node)
+		{
+			node->prev->next = node->next;
+			node->next->prev = node->prev;
+		}
+
+		void _MoveToFront(LRUElement* node)
+		{
+			node->next = head->next;
+			node->prev = head;
+			head->next = node;
+			node->next->prev = node;
+		}
+
+		void _RemoveTailNode()
+		{
+			LRUElement* node = tail->prev;
+			_DetachNode(node);
+			map.erase(node->key);
+			--_count;
+		}
+
+	public:
+		LRUCache(int capacity)
+		{
+			_capacity = capacity;
+			_count = 0;
+			head = new LRUElement();
+			tail = new LRUElement();
+			head->prev = NULL;
+			head->next = tail;
+			tail->prev = head;
+			tail->next = NULL;
+		}
+
+		int get(int key)
+		{
+			if (map.find(key) == map.end())
+			{
+				return -1;
+			}
+			else
+			{
+				LRUElement* node = map[key];
+				_DetachNode(node);
+				_MoveToFront(node);
+				return node->value;
+			}
+		}
+
+		void put(int key, int value)
+		{
+			if (map.find(key)==map.end())
+			{
+				LRUElement* node = new LRUElement();
+				if (_count == _capacity)
+				{
+					_RemoveTailNode();
+				}
+
+				node -> key = key;
+				node->value = value;
+				map[key] = node;
+				_MoveToFront(node);
+				++_count;
+			}
+			else
+			{
+				LRUElement* node = map[key];
+				_DetachNode(node);
+				node->value = value;
+				_MoveToFront(node);
+			}
+		}
+};
+```
 
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SortColors on Hanswu</title>
+    <link>http://falcontw.me/codingquestions/array/sortcolors/</link>
+    <description>Recent content in SortColors on Hanswu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 22 Sep 2018 22:06:32 +0800</lastBuildDate>
+    
+	<atom:link href="http://falcontw.me/codingquestions/array/sortcolors/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

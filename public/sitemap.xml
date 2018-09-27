@@ -13,6 +13,26 @@
   </url>
   
   <url>
+    <loc>http://falcontw.me/codingquestions/systemdesign/lru_cache/</loc>
+    <lastmod>2018-09-24T23:38:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://falcontw.me/codingquestions/tree/binarytreelevelorder/</loc>
+    <lastmod>2018-09-24T10:13:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://falcontw.me/codingquestions/array/sortcolors/</loc>
+    <lastmod>2018-09-22T22:06:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://falcontw.me/codingquestions/tree/validatebst/</loc>
+    <lastmod>2018-09-22T18:26:45+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://falcontw.me/codingquestions/array/wigglesort2/</loc>
     <lastmod>2018-09-16T23:31:53+08:00</lastmod>
   </url>
@@ -48,7 +68,17 @@
   </url>
   
   <url>
+    <loc>http://falcontw.me/codingquestions/systemdesign/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://falcontw.me/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://falcontw.me/codingquestions/tree/</loc>
     <priority>0</priority>
   </url>
   
