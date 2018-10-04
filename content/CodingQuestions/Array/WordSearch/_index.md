@@ -79,3 +79,54 @@ bool searchWord(vector<vector<char>> &board,string word,int idx,int i, int j, ve
 }
 ```
 
+## Solution 2
+
+Or otherwise , we may just modify the visited board entry and restore it afterwards, then we don't need additional visited array.
+
+```C++
+bool exist(vector<vector<char>>& board, string word)
+{
+    if (board.empty() || board[0].empty())
+    {
+        return false;
+    }
+
+    vector<vector<bool>> visited(board.size(), vector<bool>(board[0].size(), false));
+
+    for (int i = 0; i<board.size(); ++i)
+    {
+        for (int j = 0; j<board[0].size(); ++j)
+        {
+            if (searchWord(board,word,0,i, j, visited))
+            {
+                return true;
+            }
+        }
+    }
+    
+    return false;
+}
+
+bool searchWord(vector<vector<char>> &board,string word,int idx,int i, int j, vector<vector<bool>> &visited)
+{
+    if (idx == word.size())
+    {
+        return true;
+    }
+
+    if (i < 0 || j < 0 || i > board.size() - 1 || j > board[0].size() - 1 || board[i][j] != word[idx])
+    {
+        return false;
+    }
+    
+    char c = board[i][j];
+    board[i][j] = '#';
+    bool res = searchWord(board, word, idx + 1, i - 1, j, visited)
+        || searchWord(board, word, idx + 1, i + 1, j, visited)
+        || searchWord(board, word, idx + 1, i, j - 1, visited)
+        || searchWord(board, word, idx + 1, i, j + 1, visited);
+    board[i][j] = c;
+    
+    return res;
+}
+```
