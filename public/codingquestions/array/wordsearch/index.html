@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href=/images/favicon.ico type="image/x-icon" />
 <link rel="icon" href=/images/favicon.ico type="image/x-icon" />
-    <title>Coding Questions :: Hanswu</title>
+    <title>WordSearch :: Hanswu</title>
     
     
     <link href="/css/nucleus.css?1538803722" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/codingquestions/">
+  <body class="" data-url="/codingquestions/array/wordsearch/">
     <nav id="sidebar" class="">
 
 
@@ -172,7 +172,7 @@
     
     <li data-nav-id="/codingquestions/" title="Coding Questions" class="dd-item 
         parent
-        active
+        
         
         ">
       <a href="/codingquestions/">
@@ -198,7 +198,7 @@
   
     
     <li data-nav-id="/codingquestions/array/" title="Array" class="dd-item 
-        
+        parent
         
         
         ">
@@ -225,8 +225,8 @@
   
     
     <li data-nav-id="/codingquestions/array/wordsearch/" title="WordSearch" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/codingquestions/array/wordsearch/">
@@ -506,6 +506,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
                   <span class="links">
                     
           
@@ -514,7 +516,19 @@
             
           
           
-            <a href='/'>Hanswu</a> > Coding Questions
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/array/'>Array</a> > WordSearch
+          
+         
+          
+         
           
          
           
@@ -522,14 +536,28 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#solution-1">Solution 1</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
 
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h2>WordSearch</h2>
           
 
         
@@ -537,22 +565,83 @@
 
 
 
-<p><br />
-<br />
-<br />
-<br />
-<br />
-<br /></p>
+<p><a href="https://leetcode.com/problems/word-search/description/">Questions Link</a></p>
 
-<h1 id="leetcode-hackerrank">Leetcode / Hackerrank.</h1>
+<p>Given a 2D board and a word, find if the word exists in the grid.</p>
 
+<p>The word can be constructed from letters of sequentially adjacent cell, where &ldquo;adjacent&rdquo; cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
+
+<p>Example:</p>
+
+<pre><code>board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+
+Given word = &quot;ABCCED&quot;, return true.
+Given word = &quot;SEE&quot;, return true.
+Given word = &quot;ABCB&quot;, return false.
+</code></pre>
+
+<h2 id="solution-1">Solution 1</h2>
+
+<p>We need to start from everypoint and search in four directions to check if there is word matched, in this way,</p>
+
+<p>we apply DFS and backtracking to this problem, and initialize a &lsquo;visited&rsquo; array to keep recording where this entry is visited</p>
+
+<p>for traversing the whole board.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#6ab825;font-weight:bold">bool</span> <span style="color:#447fcf">exist</span>(vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">char</span>&gt;&gt;&amp; board, string word)
+{
+    <span style="color:#6ab825;font-weight:bold">if</span> (board.empty() || board[<span style="color:#3677a9">0</span>].empty())
+    {
+        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
+    }
+
+    vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">bool</span>&gt;&gt; visited(board.size(), vector&lt;<span style="color:#6ab825;font-weight:bold">bool</span>&gt;(board[<span style="color:#3677a9">0</span>].size(), <span style="color:#24909d">false</span>));
+
+    <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">int</span> i = <span style="color:#3677a9">0</span>; i&lt;board.size(); ++i)
+    {
+        <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">int</span> j = <span style="color:#3677a9">0</span>; j&lt;board[<span style="color:#3677a9">0</span>].size(); ++j)
+        {
+            <span style="color:#6ab825;font-weight:bold">if</span> (searchWord(board,word,<span style="color:#3677a9">0</span>,i, j, visited))
+            {
+                <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">true</span>;
+            }
+        }
+    }
+    
+    <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
+}
+
+<span style="color:#6ab825;font-weight:bold">bool</span> <span style="color:#447fcf">searchWord</span>(vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">char</span>&gt;&gt; &amp;board,string word,<span style="color:#6ab825;font-weight:bold">int</span> idx,<span style="color:#6ab825;font-weight:bold">int</span> i, <span style="color:#6ab825;font-weight:bold">int</span> j, vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">bool</span>&gt;&gt; &amp;visited)
+{
+    <span style="color:#6ab825;font-weight:bold">if</span> (idx == word.size())
+    {
+        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">true</span>;
+    }
+
+    <span style="color:#6ab825;font-weight:bold">if</span> (i &lt; <span style="color:#3677a9">0</span> || j &lt; <span style="color:#3677a9">0</span> || i &gt; board.size() - <span style="color:#3677a9">1</span> || j &gt; board[<span style="color:#3677a9">0</span>].size() - <span style="color:#3677a9">1</span> || visited[i][j] || board[i][j] != word[idx])
+    {
+        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
+    }
+    
+    visited[i][j] = <span style="color:#24909d">true</span>;
+    <span style="color:#6ab825;font-weight:bold">bool</span> res = searchWord(board, word, idx + <span style="color:#3677a9">1</span>, i - <span style="color:#3677a9">1</span>, j, visited)
+        || searchWord(board, word, idx + <span style="color:#3677a9">1</span>, i + <span style="color:#3677a9">1</span>, j, visited)
+        || searchWord(board, word, idx + <span style="color:#3677a9">1</span>, i, j - <span style="color:#3677a9">1</span>, visited)
+        || searchWord(board, word, idx + <span style="color:#3677a9">1</span>, i, j + <span style="color:#3677a9">1</span>, visited);
+    visited[i][j] = <span style="color:#24909d">false</span>;
+    
+    <span style="color:#6ab825;font-weight:bold">return</span> res;
+}
+</code></pre></div>
 
 <footer class=" footline" >
 	
 </footer>
 
-        
-            </div> 
         
         </div> 
         
@@ -664,8 +753,6 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -681,6 +768,26 @@ s.setAttribute('data-timestamp', +new Date());
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -708,56 +815,6 @@ s.setAttribute('data-timestamp', +new Date());
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
                     
                         
             
@@ -809,6 +866,40 @@ s.setAttribute('data-timestamp', +new Date());
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -838,10 +929,10 @@ s.setAttribute('data-timestamp', +new Date());
 
 
         
-            <a class="nav nav-prev" href="/learninghistory/softwareengineering/solidprinciple/" title="SOLID Principle"> <i class="fa fa-angle-left"></i></a>
+            <a class="nav nav-prev" href="/codingquestions/array/" title="Array"> <i class="fa fa-angle-left"></i></a>
         
         
-            <a class="nav nav-next" href="/codingquestions/array/" title="Array" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+            <a class="nav nav-next" href="/codingquestions/array/sortcolors/" title="SortColors" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
         
     </div>
 
