@@ -12,19 +12,19 @@
     <title>WordSearch :: Hanswu</title>
     
     
-    <link href="/css/nucleus.css?1538803722" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1538803722" rel="stylesheet">
+    <link href="/css/nucleus.css?1539161349" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1539161349" rel="stylesheet">
     
-    <link href="/css/featherlight.min.css?1538803722" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1538803722" rel="stylesheet">
-    <link href="/css/auto-complete.css?1538803722" rel="stylesheet">
-    <link href="/css/theme.css?1538803722" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1538803722" rel="stylesheet">
-    <link href="/css/doc-theme.css?1538803722" rel="stylesheet">
-    <link href="/css/mobile-doc-theme.css?1538803722" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1539161349" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1539161349" rel="stylesheet">
+    <link href="/css/auto-complete.css?1539161349" rel="stylesheet">
+    <link href="/css/theme.css?1539161349" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1539161349" rel="stylesheet">
+    <link href="/css/doc-theme.css?1539161349" rel="stylesheet">
+    <link href="/css/mobile-doc-theme.css?1539161349" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1538803722"></script>
+    <script src="/js/jquery-2.x.min.js?1539161349"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1538803722"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1538803722"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1539161349"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1539161349"></script>
 <script type="text/javascript">
     
         var baseurl = '\/';
     
 </script>
-<script type="text/javascript" src="/js/search.js?1538803722"></script>
+<script type="text/javascript" src="/js/search.js?1539161349"></script>
 
     
   </div>
@@ -329,6 +329,66 @@
  
   
     
+    <li data-nav-id="/codingquestions/string/" title="Strings" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/string/">
+          Strings
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/string/longestpalindromicsubstring/" title="LongestPalindromicSubstring" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/string/longestpalindromicsubstring/">
+          LongestPalindromicSubstring
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
     <li data-nav-id="/codingquestions/systemdesign/" title="SystemDesigns" class="dd-item 
         
         
@@ -408,6 +468,30 @@
           
           
         
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/tree/kthsmallestelementinbst/" title="KthSmallestElementInBST" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/tree/kthsmallestelementinbst/">
+          KthSmallestElementInBST
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
           
             
             
@@ -543,6 +627,7 @@
 <li>
 <ul>
 <li><a href="#solution-1">Solution 1</a></li>
+<li><a href="#solution-2">Solution 2</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -633,6 +718,55 @@ Given word = &quot;ABCB&quot;, return false.
         || searchWord(board, word, idx + <span style="color:#3677a9">1</span>, i, j - <span style="color:#3677a9">1</span>, visited)
         || searchWord(board, word, idx + <span style="color:#3677a9">1</span>, i, j + <span style="color:#3677a9">1</span>, visited);
     visited[i][j] = <span style="color:#24909d">false</span>;
+    
+    <span style="color:#6ab825;font-weight:bold">return</span> res;
+}
+</code></pre></div>
+<h2 id="solution-2">Solution 2</h2>
+
+<p>Or otherwise , we may just modify the visited board entry and restore it afterwards, then we don&rsquo;t need additional visited array.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#6ab825;font-weight:bold">bool</span> <span style="color:#447fcf">exist</span>(vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">char</span>&gt;&gt;&amp; board, string word)
+{
+    <span style="color:#6ab825;font-weight:bold">if</span> (board.empty() || board[<span style="color:#3677a9">0</span>].empty())
+    {
+        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
+    }
+
+    vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">bool</span>&gt;&gt; visited(board.size(), vector&lt;<span style="color:#6ab825;font-weight:bold">bool</span>&gt;(board[<span style="color:#3677a9">0</span>].size(), <span style="color:#24909d">false</span>));
+
+    <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">int</span> i = <span style="color:#3677a9">0</span>; i&lt;board.size(); ++i)
+    {
+        <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">int</span> j = <span style="color:#3677a9">0</span>; j&lt;board[<span style="color:#3677a9">0</span>].size(); ++j)
+        {
+            <span style="color:#6ab825;font-weight:bold">if</span> (searchWord(board,word,<span style="color:#3677a9">0</span>,i, j, visited))
+            {
+                <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">true</span>;
+            }
+        }
+    }
+    
+    <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
+}
+
+<span style="color:#6ab825;font-weight:bold">bool</span> <span style="color:#447fcf">searchWord</span>(vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">char</span>&gt;&gt; &amp;board,string word,<span style="color:#6ab825;font-weight:bold">int</span> idx,<span style="color:#6ab825;font-weight:bold">int</span> i, <span style="color:#6ab825;font-weight:bold">int</span> j, vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">bool</span>&gt;&gt; &amp;visited)
+{
+    <span style="color:#6ab825;font-weight:bold">if</span> (idx == word.size())
+    {
+        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">true</span>;
+    }
+
+    <span style="color:#6ab825;font-weight:bold">if</span> (i &lt; <span style="color:#3677a9">0</span> || j &lt; <span style="color:#3677a9">0</span> || i &gt; board.size() - <span style="color:#3677a9">1</span> || j &gt; board[<span style="color:#3677a9">0</span>].size() - <span style="color:#3677a9">1</span> || board[i][j] != word[idx])
+    {
+        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
+    }
+    
+    <span style="color:#6ab825;font-weight:bold">char</span> c = board[i][j];
+    board[i][j] = <span style="color:#ed9d13">&#39;#&#39;</span>;
+    <span style="color:#6ab825;font-weight:bold">bool</span> res = searchWord(board, word, idx + <span style="color:#3677a9">1</span>, i - <span style="color:#3677a9">1</span>, j, visited)
+        || searchWord(board, word, idx + <span style="color:#3677a9">1</span>, i + <span style="color:#3677a9">1</span>, j, visited)
+        || searchWord(board, word, idx + <span style="color:#3677a9">1</span>, i, j - <span style="color:#3677a9">1</span>, visited)
+        || searchWord(board, word, idx + <span style="color:#3677a9">1</span>, i, j + <span style="color:#3677a9">1</span>, visited);
+    board[i][j] = c;
     
     <span style="color:#6ab825;font-weight:bold">return</span> res;
 }
@@ -900,6 +1034,56 @@ s.setAttribute('data-timestamp', +new Date());
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -941,20 +1125,20 @@ s.setAttribute('data-timestamp', +new Date());
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1538803722"></script>
-    <script src="/js/perfect-scrollbar.min.js?1538803722"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1538803722"></script>
-    <script src="/js/jquery.sticky.js?1538803722"></script>
-    <script src="/js/featherlight.min.js?1538803722"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1538803722"></script>
-    <script src="/js/highlight.pack.js?1538803722"></script>
+    <script src="/js/clipboard.min.js?1539161349"></script>
+    <script src="/js/perfect-scrollbar.min.js?1539161349"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1539161349"></script>
+    <script src="/js/jquery.sticky.js?1539161349"></script>
+    <script src="/js/featherlight.min.js?1539161349"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1539161349"></script>
+    <script src="/js/highlight.pack.js?1539161349"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1538803722"></script>
-    <script src="/js/learn.js?1538803722"></script>
-    <script src="/js/hugo-learn.js?1538803722"></script>
+    <script src="/js/modernizr.custom.71422.js?1539161349"></script>
+    <script src="/js/learn.js?1539161349"></script>
+    <script src="/js/hugo-learn.js?1539161349"></script>
 
-    <link href="/mermaid/mermaid.css?1538803722" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1538803722"></script>
+    <link href="/mermaid/mermaid.css?1539161349" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1539161349"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

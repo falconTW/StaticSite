@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href=/images/favicon.ico type="image/x-icon" />
 <link rel="icon" href=/images/favicon.ico type="image/x-icon" />
-    <title>ValidateBST :: Hanswu</title>
+    <title>LongestPalindromicSubstring :: Hanswu</title>
     
     
     <link href="/css/nucleus.css?1539161349" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/codingquestions/tree/validatebst/">
+  <body class="" data-url="/codingquestions/string/longestpalindromicsubstring/">
     <nav id="sidebar" class="">
 
 
@@ -330,7 +330,7 @@
   
     
     <li data-nav-id="/codingquestions/string/" title="Strings" class="dd-item 
-        
+        parent
         
         
         ">
@@ -357,8 +357,8 @@
   
     
     <li data-nav-id="/codingquestions/string/longestpalindromicsubstring/" title="LongestPalindromicSubstring" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/codingquestions/string/longestpalindromicsubstring/">
@@ -450,7 +450,7 @@
   
     
     <li data-nav-id="/codingquestions/tree/" title="Trees" class="dd-item 
-        parent
+        
         
         
         ">
@@ -525,8 +525,8 @@
   
     
     <li data-nav-id="/codingquestions/tree/validatebst/" title="ValidateBST" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/codingquestions/tree/validatebst/">
@@ -608,7 +608,7 @@
             
           
           
-            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/tree/'>Trees</a> > ValidateBST
+            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/string/'>Strings</a> > LongestPalindromicSubstring
           
          
           
@@ -622,15 +622,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#solution-1">Solution 1</a></li>
-<li><a href="#solution-2">Solution 2</a></li>
-</ul></li>
-</ul>
-</nav>
+
     </div>
 </div>
 
@@ -642,106 +634,89 @@
         
         <div id="body-inner">
           
-            <h2>ValidateBST</h2>
+            <h2>LongestPalindromicSubstring</h2>
           
 
         
 
 
+<p><a href="https://leetcode.com/problems/longest-palindromic-substring/description/">Question Link</a></p>
 
-
-<p><a href="https://leetcode.com/problems/validate-binary-search-tree/">Questions Link</a></p>
-
-<pre><code>Given a binary tree, determine if it is a valid binary search tree (BST).
-
-Assume a BST is defined as follows:
-
-The left subtree of a node contains only nodes with keys less than the node's key.
-The right subtree of a node contains only nodes with keys greater than the node's key.
-Both the left and right subtrees must also be binary search trees.
-</code></pre>
+<p>Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.</p>
 
 <pre><code>Example 1:
 
-Input:
-    2
-   / \
-  1   3
-Output: true
+Input: &quot;babad&quot;
+Output: &quot;bab&quot;
+Note: &quot;aba&quot; is also a valid answer.
+Example 2:
+
+Input: &quot;cbbd&quot;
+Output: &quot;bb&quot;
 </code></pre>
 
-<p>To validate a Binary Search Tree, we can either utilize its property to validate</p>
+<p>##Solution</p>
 
-<p>or we can have inorder traverse to see if the previous element is smaller than current one,</p>
+<p>This is a classic dynamic programming problem.</p>
 
-<p>if not, that implies this BST is invalid.</p>
+<p>We must figure out what <strong>Subproblem</strong> and <strong>Optimal structure</strong>.</p>
 
-<h2 id="solution-1">Solution 1</h2>
+<p>The optimal solution can derived from every Optimal solution of the subproblems.</p>
 
-<p>We validate each node of the tree to see if it meets with the property.</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#6ab825;font-weight:bold">class</span><span style="color:#a61717;background-color:#e3d2d2"> </span><span style="color:#447fcf;text-decoration:underline">Solution</span> {
-<span style="color:#6ab825;font-weight:bold">public</span>:
-    <span style="color:#6ab825;font-weight:bold">bool</span> isValidBST(TreeNode* root) 
-    {
-        <span style="color:#6ab825;font-weight:bold">return</span> checkValidBST(root,LONG_MIN,LONG_MAX);
-    }
-    
-    <span style="color:#6ab825;font-weight:bold">bool</span> checkValidBST(TreeNode* root,<span style="color:#6ab825;font-weight:bold">long</span> min,<span style="color:#6ab825;font-weight:bold">long</span> max)
-    {
-        <span style="color:#6ab825;font-weight:bold">if</span>(root==<span style="color:#24909d">NULL</span>)
-        {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">true</span>;
-        }
-        
-        <span style="color:#6ab825;font-weight:bold">if</span>(root-&gt;val &lt;= min || root-&gt;val &gt;=max)
-        {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
-        }
-        
-        <span style="color:#6ab825;font-weight:bold">return</span> checkValidBST(root-&gt;left,min,root-&gt;val) &amp;&amp; checkValidBST(root-&gt;right,root-&gt;val,max);
-    }
-};
-</code></pre></div>
-<h2 id="solution-2">Solution 2</h2>
+<p>Here we can easily figure out that the Longest palindromic string is related to all the short palindromic string,</p>
 
-<p>We traverse the whole tree with inorder and see if the prev element is always smaller than current one.</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#6ab825;font-weight:bold">class</span><span style="color:#a61717;background-color:#e3d2d2"> </span><span style="color:#447fcf;text-decoration:underline">Solution</span> {
-<span style="color:#6ab825;font-weight:bold">public</span>:
-    <span style="color:#6ab825;font-weight:bold">bool</span> isValidBST(TreeNode* root) 
-    {
-        <span style="color:#6ab825;font-weight:bold">long</span> prev = LONG_MIN;
-        
-        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#447fcf">inorderTraverse</span>(root,prev);
-    }
-    
-    <span style="color:#6ab825;font-weight:bold">bool</span> inorderTraverse(TreeNode* root, <span style="color:#6ab825;font-weight:bold">long</span>&amp; prev)
-    {
-        <span style="color:#6ab825;font-weight:bold">if</span>(root==<span style="color:#24909d">NULL</span>)
-        {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">true</span>;
-        }
-        
-        <span style="color:#6ab825;font-weight:bold">if</span>(!inorderTraverse(root-&gt;left,prev))
-        {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
-        }
-        
-        <span style="color:#6ab825;font-weight:bold">if</span>(prev &gt;=root-&gt;val)
-        {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
-        }
-        
-        prev = root-&gt;val;
-        
-        <span style="color:#6ab825;font-weight:bold">if</span>(!inorderTraverse(root-&gt;right,prev))
-        {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
-        }
-        
-        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">true</span>;
-        
-    }
-};
+<p>Let P[i,j] =  is section [i,j] is a palindrome.</p>
+
+<p>For example :
+S= a b c c b
+Index = 0 1 2 3 4</p>
+
+<p>We can see that</p>
+
+<p>P[0,0] =1 //each char is a palindrome
+P[0,1] =S[0] == S[1] , P[1,1] =1
+P[0,2] = S[0] == S[2] &amp;&amp; P[1,1], P[1,2] = S[1] == S[2] , P[2,2] = 1
+P[0,3] = S[0] == S[3] &amp;&amp; P[1,2], P[1,3] = S[1] == S[3] &amp;&amp; P[2,2] , P[2,3] =S[2] ==S[3], P[3,3]=1</p>
+
+<p>Here we can conclude these examples to rules.</p>
+
+<p>P[i,j] = 1 if i ==j
+= S[i] ==S[j] if j = i+1
+= S[i] == S[j] &amp;&amp; P[i+1][j-1] if j&gt;i+1</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"> string <span style="color:#447fcf">longestPalindrome</span>(string s) 
+{
+    <span style="color:#6ab825;font-weight:bold">if</span> (s.size() &lt;= <span style="color:#3677a9">1</span>)
+     {
+         <span style="color:#6ab825;font-weight:bold">return</span> s;
+     }
+
+     <span style="color:#6ab825;font-weight:bold">int</span> start = <span style="color:#3677a9">0</span>;
+     <span style="color:#6ab825;font-weight:bold">int</span> end = <span style="color:#3677a9">0</span>;
+     <span style="color:#6ab825;font-weight:bold">int</span> currentMaxLen = <span style="color:#3677a9">0</span>;
+
+     vector&lt;vector&lt;<span style="color:#6ab825;font-weight:bold">bool</span>&gt;&gt; dp(s.size(), vector&lt;<span style="color:#6ab825;font-weight:bold">bool</span>&gt;(s.size(), <span style="color:#24909d">false</span>));
+
+     <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">int</span> i = <span style="color:#3677a9">0</span>; i &lt; s.size(); ++i)
+     {
+         <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">int</span> j = <span style="color:#3677a9">0</span>; j &lt; i; ++j)
+         {
+             dp[j][i] = s[i] == s[j] &amp;&amp; (i - j &lt;= <span style="color:#3677a9">2</span> || dp[j + <span style="color:#3677a9">1</span>][i - <span style="color:#3677a9">1</span>]);
+             <span style="color:#6ab825;font-weight:bold">if</span> (dp[j][i])
+             {
+                 <span style="color:#6ab825;font-weight:bold">if</span> (currentMaxLen&lt;i - j + <span style="color:#3677a9">1</span>)
+                 {
+                     start = j;
+                     end = i;
+                     currentMaxLen = i - j + <span style="color:#3677a9">1</span>;
+                 }
+             }
+         }
+         dp[i][i] = <span style="color:#24909d">true</span>;
+     }
+
+     <span style="color:#6ab825;font-weight:bold">return</span> s.substr(start, end-start+<span style="color:#3677a9">1</span>); 
+ <span style="color:#a61717;background-color:#e3d2d2">ㄎ</span>    <span style="color:#999;font-style:italic">// Should not replace end-start+1 with currentMaxLen since in case &#34;ac&#34;,currentMaxLen will be zero but still we need one char as answer
+</span><span style="color:#999;font-style:italic"></span> }
 </code></pre></div>
 
 <footer class=" footline" >
@@ -944,6 +919,45 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -1004,44 +1018,6 @@ s.setAttribute('data-timestamp', +new Date());
             
         
                     
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
             
             
@@ -1063,7 +1039,6 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
-                    
                 
                 
 
@@ -1088,10 +1063,10 @@ s.setAttribute('data-timestamp', +new Date());
 
 
         
-            <a class="nav nav-prev" href="/codingquestions/tree/binarytreelevelorder/" title="BinaryTreeLevelOrder"> <i class="fa fa-angle-left"></i></a>
+            <a class="nav nav-prev" href="/codingquestions/string/" title="Strings"> <i class="fa fa-angle-left"></i></a>
         
         
-            <a class="nav nav-next" href="/codingquestions/tree/kthsmallestelementinbst/" title="KthSmallestElementInBST" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+            <a class="nav nav-next" href="/codingquestions/systemdesign/" title="SystemDesigns" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
         
     </div>
 

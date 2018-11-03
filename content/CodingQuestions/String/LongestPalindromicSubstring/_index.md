@@ -43,3 +43,45 @@ P[0,1] =S[0] == S[1] , P[1,1] =1
 P[0,2] = S[0] == S[2] && P[1,1], P[1,2] = S[1] == S[2] , P[2,2] = 1
 P[0,3] = S[0] == S[3] && P[1,2], P[1,3] = S[1] == S[3] && P[2,2] , P[2,3] =S[2] ==S[3], P[3,3]=1
 
+Here we can conclude these examples to rules.
+
+P[i,j] = 1 if i ==j
+= S[i] ==S[j] if j = i+1
+= S[i] == S[j] && P[i+1][j-1] if j>i+1
+
+```C++
+ string longestPalindrome(string s) 
+{
+    if (s.size() <= 1)
+	 {
+		 return s;
+	 }
+
+	 int start = 0;
+	 int end = 0;
+	 int currentMaxLen = 0;
+
+	 vector<vector<bool>> dp(s.size(), vector<bool>(s.size(), false));
+
+	 for (int i = 0; i < s.size(); ++i)
+	 {
+		 for (int j = 0; j < i; ++j)
+		 {
+			 dp[j][i] = s[i] == s[j] && (i - j <= 2 || dp[j + 1][i - 1]);
+			 if (dp[j][i])
+			 {
+				 if (currentMaxLen<i - j + 1)
+				 {
+					 start = j;
+					 end = i;
+					 currentMaxLen = i - j + 1;
+				 }
+			 }
+		 }
+		 dp[i][i] = true;
+	 }
+
+	 return s.substr(start, end-start+1); 
+     // Should not replace end-start+1 with currentMaxLen since in case "ac",currentMaxLen will be zero but still we need one char as answer
+ }
+```

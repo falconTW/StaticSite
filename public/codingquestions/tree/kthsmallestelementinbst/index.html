@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href=/images/favicon.ico type="image/x-icon" />
 <link rel="icon" href=/images/favicon.ico type="image/x-icon" />
-    <title>ValidateBST :: Hanswu</title>
+    <title>KthSmallestElementInBST :: Hanswu</title>
     
     
     <link href="/css/nucleus.css?1539161349" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/codingquestions/tree/validatebst/">
+  <body class="" data-url="/codingquestions/tree/kthsmallestelementinbst/">
     <nav id="sidebar" class="">
 
 
@@ -477,8 +477,8 @@
   
     
     <li data-nav-id="/codingquestions/tree/kthsmallestelementinbst/" title="KthSmallestElementInBST" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/codingquestions/tree/kthsmallestelementinbst/">
@@ -525,8 +525,8 @@
   
     
     <li data-nav-id="/codingquestions/tree/validatebst/" title="ValidateBST" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/codingquestions/tree/validatebst/">
@@ -608,7 +608,7 @@
             
           
           
-            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/tree/'>Trees</a> > ValidateBST
+            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/tree/'>Trees</a> > KthSmallestElementInBST
           
          
           
@@ -622,15 +622,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#solution-1">Solution 1</a></li>
-<li><a href="#solution-2">Solution 2</a></li>
-</ul></li>
-</ul>
-</nav>
+
     </div>
 </div>
 
@@ -642,106 +634,113 @@
         
         <div id="body-inner">
           
-            <h2>ValidateBST</h2>
+            <h2>KthSmallestElementInBST</h2>
           
 
         
 
 
+<p><a href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/">Questions Link</a></p>
 
+<p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
 
-<p><a href="https://leetcode.com/problems/validate-binary-search-tree/">Questions Link</a></p>
-
-<pre><code>Given a binary tree, determine if it is a valid binary search tree (BST).
-
-Assume a BST is defined as follows:
-
-The left subtree of a node contains only nodes with keys less than the node's key.
-The right subtree of a node contains only nodes with keys greater than the node's key.
-Both the left and right subtrees must also be binary search trees.
-</code></pre>
+<p>Note:
+You may assume k is always valid, 1 ≤ k ≤ BST&rsquo;s total elements.</p>
 
 <pre><code>Example 1:
 
-Input:
-    2
-   / \
-  1   3
-Output: true
+Input: root = [3,1,4,null,2], k = 1
+   3
+  / \
+ 1   4
+  \
+   2
+Output: 1
+Example 2:
+
+Input: root = [5,3,6,2,4,null,null,1], k = 3
+       5
+      / \
+     3   6
+    / \
+   2   4
+  /
+ 1
+Output: 3
 </code></pre>
 
-<p>To validate a Binary Search Tree, we can either utilize its property to validate</p>
+<p>Follow up:
+What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?</p>
 
-<p>or we can have inorder traverse to see if the previous element is smaller than current one,</p>
+<p>##Solution 1</p>
 
-<p>if not, that implies this BST is invalid.</p>
-
-<h2 id="solution-1">Solution 1</h2>
-
-<p>We validate each node of the tree to see if it meets with the property.</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#6ab825;font-weight:bold">class</span><span style="color:#a61717;background-color:#e3d2d2"> </span><span style="color:#447fcf;text-decoration:underline">Solution</span> {
-<span style="color:#6ab825;font-weight:bold">public</span>:
-    <span style="color:#6ab825;font-weight:bold">bool</span> isValidBST(TreeNode* root) 
+<p>Inorder traverse will do. Pass the k value to each recursive call and return when the</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#6ab825;font-weight:bold">int</span> <span style="color:#447fcf">kthSmallest</span>(TreeNode* root, <span style="color:#6ab825;font-weight:bold">int</span> k)
     {
-        <span style="color:#6ab825;font-weight:bold">return</span> checkValidBST(root,LONG_MIN,LONG_MAX);
+        <span style="color:#6ab825;font-weight:bold">int</span> ans = <span style="color:#3677a9">0</span>;
+
+        <span style="color:#6ab825;font-weight:bold">if</span> (root == <span style="color:#24909d">NULL</span>)
+        {
+            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#3677a9">0</span>;
+        }
+        helper(root, k, ans);
+
+        <span style="color:#6ab825;font-weight:bold">return</span> ans;
     }
-    
-    <span style="color:#6ab825;font-weight:bold">bool</span> checkValidBST(TreeNode* root,<span style="color:#6ab825;font-weight:bold">long</span> min,<span style="color:#6ab825;font-weight:bold">long</span> max)
+
+    <span style="color:#6ab825;font-weight:bold">void</span> <span style="color:#447fcf">helper</span>(TreeNode* root, <span style="color:#6ab825;font-weight:bold">int</span> &amp;k,<span style="color:#6ab825;font-weight:bold">int</span> &amp;ans)
     {
-        <span style="color:#6ab825;font-weight:bold">if</span>(root==<span style="color:#24909d">NULL</span>)
+        <span style="color:#6ab825;font-weight:bold">if</span> (root-&gt;left != <span style="color:#24909d">NULL</span>)
         {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">true</span>;
+            helper(root-&gt;left, k,ans);
         }
-        
-        <span style="color:#6ab825;font-weight:bold">if</span>(root-&gt;val &lt;= min || root-&gt;val &gt;=max)
+
+        <span style="color:#6ab825;font-weight:bold">if</span> (k == <span style="color:#3677a9">0</span>)
         {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
+            ans = root-&gt;val;
         }
-        
-        <span style="color:#6ab825;font-weight:bold">return</span> checkValidBST(root-&gt;left,min,root-&gt;val) &amp;&amp; checkValidBST(root-&gt;right,root-&gt;val,max);
+
+        k = k - <span style="color:#3677a9">1</span>;
+
+        <span style="color:#6ab825;font-weight:bold">if</span> (root-&gt;right != <span style="color:#24909d">NULL</span>)
+        {
+            helper(root-&gt;right, k, ans);
+        }
+
+
     }
-};
 </code></pre></div>
-<h2 id="solution-2">Solution 2</h2>
+<p>##Solution 2
+In the followup part, if the BST is modified often, the cost of traversing will be expensive.</p>
 
-<p>We traverse the whole tree with inorder and see if the prev element is always smaller than current one.</p>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#6ab825;font-weight:bold">class</span><span style="color:#a61717;background-color:#e3d2d2"> </span><span style="color:#447fcf;text-decoration:underline">Solution</span> {
-<span style="color:#6ab825;font-weight:bold">public</span>:
-    <span style="color:#6ab825;font-weight:bold">bool</span> isValidBST(TreeNode* root) 
+<p>Since the kth smallest element has k-1 nodes in its left-hand side,we may use Divide and Conquer to squeeze out the value.</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#6ab825;font-weight:bold">int</span> <span style="color:#447fcf">kthSmallest</span>(TreeNode* root, <span style="color:#6ab825;font-weight:bold">int</span> k)
     {
-        <span style="color:#6ab825;font-weight:bold">long</span> prev = LONG_MIN;
-        
-        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#447fcf">inorderTraverse</span>(root,prev);
+        <span style="color:#6ab825;font-weight:bold">int</span> count = countNodes(root-&gt;left);
+
+        <span style="color:#6ab825;font-weight:bold">if</span> (count == k - <span style="color:#3677a9">1</span>)
+        {
+            <span style="color:#6ab825;font-weight:bold">return</span> root-&gt;val;
+        }
+        <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (count &lt; k - <span style="color:#3677a9">1</span>)
+        {
+            <span style="color:#6ab825;font-weight:bold">return</span> kthSmallest(root-&gt;right,k-count-<span style="color:#3677a9">1</span> );
+        }
+        <span style="color:#6ab825;font-weight:bold">else</span>
+        {
+            <span style="color:#6ab825;font-weight:bold">return</span> kthSmallest(root-&gt;left, k);
+        }
     }
-    
-    <span style="color:#6ab825;font-weight:bold">bool</span> inorderTraverse(TreeNode* root, <span style="color:#6ab825;font-weight:bold">long</span>&amp; prev)
+
+    <span style="color:#6ab825;font-weight:bold">int</span> <span style="color:#447fcf">countNodes</span>(TreeNode* root)
     {
-        <span style="color:#6ab825;font-weight:bold">if</span>(root==<span style="color:#24909d">NULL</span>)
+        <span style="color:#6ab825;font-weight:bold">if</span> (root == <span style="color:#24909d">NULL</span>)
         {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">true</span>;
+            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#3677a9">0</span>;
         }
-        
-        <span style="color:#6ab825;font-weight:bold">if</span>(!inorderTraverse(root-&gt;left,prev))
-        {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
-        }
-        
-        <span style="color:#6ab825;font-weight:bold">if</span>(prev &gt;=root-&gt;val)
-        {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
-        }
-        
-        prev = root-&gt;val;
-        
-        <span style="color:#6ab825;font-weight:bold">if</span>(!inorderTraverse(root-&gt;right,prev))
-        {
-            <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">false</span>;
-        }
-        
-        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#24909d">true</span>;
-        
+
+        <span style="color:#6ab825;font-weight:bold">return</span> <span style="color:#3677a9">1</span> + countNodes(root-&gt;left) + countNodes(root-&gt;right);
     }
-};
 </code></pre></div>
 
 <footer class=" footline" >
@@ -1028,6 +1027,23 @@ s.setAttribute('data-timestamp', +new Date());
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                         
                         
                     
@@ -1058,23 +1074,6 @@ s.setAttribute('data-timestamp', +new Date());
             
         
                     
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1088,10 +1087,10 @@ s.setAttribute('data-timestamp', +new Date());
 
 
         
-            <a class="nav nav-prev" href="/codingquestions/tree/binarytreelevelorder/" title="BinaryTreeLevelOrder"> <i class="fa fa-angle-left"></i></a>
+            <a class="nav nav-prev" href="/codingquestions/tree/" title="Trees"> <i class="fa fa-angle-left"></i></a>
         
         
-            <a class="nav nav-next" href="/codingquestions/tree/kthsmallestelementinbst/" title="KthSmallestElementInBST" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+            <a class="nav nav-next" href="/codingquestions/tree/binarytreelevelorder/" title="BinaryTreeLevelOrder" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
         
     </div>
 

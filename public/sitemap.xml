@@ -13,6 +13,16 @@
   </url>
   
   <url>
+    <loc>http://falcontw.me/codingquestions/string/longestpalindromicsubstring/</loc>
+    <lastmod>2018-10-06T21:29:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://falcontw.me/codingquestions/tree/kthsmallestelementinbst/</loc>
+    <lastmod>2018-10-06T13:31:05+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://falcontw.me/codingquestions/array/wordsearch/</loc>
     <lastmod>2018-09-28T02:19:52+08:00</lastmod>
   </url>
@@ -69,6 +79,11 @@
   
   <url>
     <loc>http://falcontw.me/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://falcontw.me/codingquestions/string/</loc>
     <priority>0</priority>
   </url>
   
