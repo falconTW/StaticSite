@@ -20,7 +20,7 @@ Output: "bb"
 ```
 
 
-##Solution
+## Solution1
 
 This is a classic dynamic programming problem.
 

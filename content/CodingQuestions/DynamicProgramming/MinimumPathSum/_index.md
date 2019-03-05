@@ -23,7 +23,7 @@ Output: 7
 Explanation: Because the path 1→3→1→1→1 minimizes the sum.
 ```
 
-#Solution 1
+## Solution 1
 
 This is a simple dynamic programming problem.
 
