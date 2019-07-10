@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.47.1" />
+    <meta name="description" content="">
+
+
+    <link rel="shortcut icon" href=/images/favicon.ico type="image/x-icon" />
+<link rel="icon" href=/images/favicon.ico type="image/x-icon" />
+    <title>SearchInRotatedSortedArray :: Hanswu</title>
+    
+    
+    <link href="/css/nucleus.css?1562474921" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1562474921" rel="stylesheet">
+    
+    <link href="/css/featherlight.min.css?1562474921" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1562474921" rel="stylesheet">
+    <link href="/css/auto-complete.css?1562474921" rel="stylesheet">
+    <link href="/css/theme.css?1562474921" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1562474921" rel="stylesheet">
+    <link href="/css/doc-theme.css?1562474921" rel="stylesheet">
+    <link href="/css/mobile-doc-theme.css?1562474921" rel="stylesheet">
+    
+
+    <script src="/js/jquery-2.x.min.js?1562474921"></script>
+    
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left{ 
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/codingquestions/array/searchinrotatedsortedarray/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+	<a id="logo" href=/>
+  <img src=/images/falcon.png />
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fa fa-search"></i></label>
+    <input data-search-input id="search-by" type="text" placeholder="Search...">
+    <span data-search-clear=""><i class="fa fa-close"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1562474921"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1562474921"></script>
+<script type="text/javascript">
+    
+        var baseurl = '\/';
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1562474921"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/" title="Coding Questions" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/codingquestions/">
+          <b>2. </b>Coding Questions
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/" title="Array" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/codingquestions/array/">
+          Array
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/searchinrotatedsortedarray/" title="SearchInRotatedSortedArray" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="/codingquestions/array/searchinrotatedsortedarray/">
+          SearchInRotatedSortedArray
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/insertinterval/" title="InsertInterval" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/insertinterval/">
+          InsertInterval
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/mergeinterval/" title="MergeInterval" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/mergeinterval/">
+          MergeInterval
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/rotateimage/" title="RotateImage" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/rotateimage/">
+          RotateImage
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/wordsearchii/" title="WordSearchII" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/wordsearchii/">
+          WordSearchII
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/largestrecinhistogram/" title="LargestRecInHistogram" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/largestrecinhistogram/">
+          LargestRecInHistogram
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/slidingwindowmaximum/" title="SlidingWindowMaximum" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/slidingwindowmaximum/">
+          SlidingWindowMaximum
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/numberofislands/" title="NumberOfIslands" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/numberofislands/">
+          NumberOfIslands
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/maxareaofislands/" title="MaxAreaOfIslands" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/maxareaofislands/">
+          MaxAreaOfIslands
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/search_2d_matrix_2/" title="Search_2D_Matrix_2" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/search_2d_matrix_2/">
+          Search_2D_Matrix_2
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/search_2d_matrix_1/" title="Search_2D_Matrix_1" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/search_2d_matrix_1/">
+          Search_2D_Matrix_1
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/3sum/" title="3Sum" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/3sum/">
+          3Sum
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/wordsearch/" title="WordSearch" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/wordsearch/">
+          WordSearch
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/sortcolors/" title="SortColors" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/sortcolors/">
+          SortColors
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/wigglesort2/" title="WiggleSort II" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/wigglesort2/">
+          WiggleSort II
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/array/median_of_two_sorted_array_with_different_size/" title="Median of 2 sorted array" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/array/median_of_two_sorted_array_with_different_size/">
+          Median of 2 sorted array
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/dynamicprogramming/" title="DynamicProgrammings" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/dynamicprogramming/">
+          DynamicProgrammings
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/dynamicprogramming/regularexpressionmatch/" title="RegularExpressionMatch" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/dynamicprogramming/regularexpressionmatch/">
+          RegularExpressionMatch
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/dynamicprogramming/wildcardmatching/" title="WildCardMatching" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/dynamicprogramming/wildcardmatching/">
+          WildCardMatching
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/dynamicprogramming/minimumpathsum/" title="MinimumPathSum" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/dynamicprogramming/minimumpathsum/">
+          MinimumPathSum
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/string/" title="Strings" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/string/">
+          Strings
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/string/decodestring/" title="DecodeString" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/string/decodestring/">
+          DecodeString
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/string/longestpalindromicsubstring/" title="LongestPalindromicSubstring" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/string/longestpalindromicsubstring/">
+          LongestPalindromicSubstring
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/systemdesign/" title="SystemDesigns" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/systemdesign/">
+          SystemDesigns
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/systemdesign/lru_cache/" title="LRU Cache" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/systemdesign/lru_cache/">
+          LRU Cache
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/tree/" title="Trees" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/tree/">
+          Trees
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/tree/kthsmallestelementinbst/" title="KthSmallestElementInBST" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/tree/kthsmallestelementinbst/">
+          KthSmallestElementInBST
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/tree/binarytreelevelorder/" title="BinaryTreeLevelOrder" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/tree/binarytreelevelorder/">
+          BinaryTreeLevelOrder
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/codingquestions/tree/validatebst/" title="ValidateBST" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/codingquestions/tree/validatebst/">
+          ValidateBST
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+  </div>
+
+  
+  <section id="footer">
+    <p> &copy; 2018 HANSWU. </p>
+  </section>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fa fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Hanswu</a> > <a href='/codingquestions/'>Coding Questions</a> > <a href='/codingquestions/array/'>Array</a> > SearchInRotatedSortedArray
+          
+         
+          
+         
+          
+         
+          
+           
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li><a href="#solution-1">Solution 1</a></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+
+        
+        <div id="body-inner">
+          
+            <h2>SearchInRotatedSortedArray</h2>
+          
+
+        
+
+
+
+
+<p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
+
+<p>(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).</p>
+
+<p>You are given a target value to search. If found in the array return its index, otherwise return -1.</p>
+
+<p>You may assume no duplicate exists in the array.</p>
+
+<p>Your algorithm&rsquo;s runtime complexity must be in the order of O(log n).</p>
+
+<pre><code>Example 1:
+
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Example 2:
+
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+</code></pre>
+
+<h1 id="solution-1">Solution 1</h1>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#6ab825;font-weight:bold">int</span> <span style="color:#447fcf">search</span>(vector&lt;<span style="color:#6ab825;font-weight:bold">int</span>&gt;&amp; nums, <span style="color:#6ab825;font-weight:bold">int</span> target) {
+        <span style="color:#6ab825;font-weight:bold">int</span> left = <span style="color:#3677a9">0</span>;
+        <span style="color:#6ab825;font-weight:bold">int</span> right = nums.size() - <span style="color:#3677a9">1</span>;
+
+        <span style="color:#6ab825;font-weight:bold">while</span> (left &lt;= right) {
+            <span style="color:#6ab825;font-weight:bold">int</span> mid = left + (right - left) / <span style="color:#3677a9">2</span>;
+            <span style="color:#6ab825;font-weight:bold">if</span> (nums[mid] == target) {
+                <span style="color:#6ab825;font-weight:bold">return</span> mid;
+            }
+            <span style="color:#6ab825;font-weight:bold">if</span> (nums[mid] &lt; nums[right]) {
+                <span style="color:#6ab825;font-weight:bold">if</span> (target &gt; nums[mid] &amp;&amp; target &lt;= nums[right]) {
+                    left = mid + <span style="color:#3677a9">1</span>;
+                }
+                <span style="color:#6ab825;font-weight:bold">else</span> {
+                    right = mid - <span style="color:#3677a9">1</span>;
+                }
+            }
+            <span style="color:#6ab825;font-weight:bold">else</span> {
+                <span style="color:#6ab825;font-weight:bold">if</span> (target &gt;= nums[left] &amp;&amp; target &lt; nums[mid]) {
+                    right = mid - <span style="color:#3677a9">1</span>;
+                }
+                <span style="color:#6ab825;font-weight:bold">else</span> {
+                    left = mid + <span style="color:#3677a9">1</span>;
+                }
+            }
+        }
+        <span style="color:#6ab825;font-weight:bold">return</span> -<span style="color:#3677a9">1</span>;
+    }
+</code></pre></div>
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+<div id="disqus_thread"></div>
+<script>
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://falcontw.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+        
+            <a class="nav nav-prev" href="/codingquestions/array/" title="Array"> <i class="fa fa-angle-left"></i></a>
+        
+        
+            <a class="nav nav-next" href="/codingquestions/array/insertinterval/" title="InsertInterval" style="margin-right: 0px;"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1562474921"></script>
+    <script src="/js/perfect-scrollbar.min.js?1562474921"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1562474921"></script>
+    <script src="/js/jquery.sticky.js?1562474921"></script>
+    <script src="/js/featherlight.min.js?1562474921"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1562474921"></script>
+    <script src="/js/highlight.pack.js?1562474921"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom.71422.js?1562474921"></script>
+    <script src="/js/learn.js?1562474921"></script>
+    <script src="/js/hugo-learn.js?1562474921"></script>
+
+    <link href="/mermaid/mermaid.css?1562474921" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1562474921"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
